@@ -13,6 +13,9 @@ The map allows projects to be grouped according to the following criteria:
 
 📍Segments of public road affected.
 
+## Link
+https://gis1030.github.io/INF-Voirie-ProjectsChantiers-1030/
+
 ## Type od Study
 Cartography of public works projects on municipal roads in Schaerbeek.
 
