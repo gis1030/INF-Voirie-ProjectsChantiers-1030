@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chantier1030 Schaerbeek</title>
+    <link rel="shortcut icon" href="images/ih2.ico" type="image/x-icon">
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+
+    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.css"
+        integrity="sha512-IM3Hs+feyi40yZhDH6kV8vQMg4Fh20s9OzInIIAc4nx7aMYMfo+IenRUekoYsHZqGkREUgx0VvlEsgm7nCDW9g=="
+        crossorigin="">
+
+    <link rel="stylesheet" href="css/MarkerCluster.css">
+    <link rel="stylesheet" href="css/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="css/GpPluginLeaflet.css" />
+    <link rel="stylesheet" href="css/easy-button.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style_html_c1030.css">
+    <link rel="stylesheet" href="css/style_clusters.css">
+</head>
+
+<body>
+    <div id="Internal_Body">
+        <div id="HTML_Heading">
+            <header class="page-header">
+                <h1>
+                    Rues et Croisements de Rues de Schaerbeek
+                </h1>
+            </header>
+            <br>
+        </div>
+
+        <div id="Region00">
+            <div id="Region04">
+                <div id="maCarte"></div>
+            </div>
+            <div id="myTable"></div>
+        </div>
+
+        <div id="Region01">
+            <div class="container">
+                <div class="row">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <label
+                                style="font-size:1.2em; font-weight: bold; text-align: center; font-style:italic; background-color:white; color:black">
+                                Rues à Schaerbeek
+                            </label>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-6 mb-2">
+                                <div class="d-flex align-items-center">
+                                    <label for="Code_Roadway1030" class="form-label me-2"
+                                        style="font-size: calc(0.5rem + 0.3vw); margin-bottom: 0;">
+                                        Code_Voirie
+                                    </label>
+                                    <input type="text" class="form-control" id="Code_Roadway1030" placeholder="code..."
+                                        disabled style="font-size: calc(0.5rem + 0.3vw);">
+                                </div>
+                            </div>
+
+                            <div class="col-6 mb-2">
+                                <div class="d-flex align-items-center">
+                                    <label for="Code_Street1030" class="form-label me-2"
+                                        style="font-size: calc(0.5rem + 0.3vw); margin-bottom: 0;">
+                                        Code_Segment
+                                    </label>
+                                    <input type="text" class="form-control" id="Code_Street1030" placeholder="code..."
+                                        disabled style="font-size: calc(0.5rem + 0.3vw);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" container">
+                        <div class="row justify-content-center">
+                            <div class="col-6 mb-2">
+                                <div class="d-flex align-items-center">
+                                    <label for="TypeStreet" class="form-label me-2"
+                                        style="font-size: calc(0.5rem + 0.3vw); margin-bottom: 0;">
+                                        Type
+                                    </label>
+                                    <input type="text" class="form-control" id="TypeStreet" placeholder="type..."
+                                        disabled style="font-size: calc(0.5rem + 0.3vw);">
+                                </div>
+                            </div>
+
+                            <div class="col-6 mb-2">
+                                <div class="d-flex align-items-center">
+                                    <label for="SegmentLength" class="form-label me-2"
+                                        style="font-size: calc(0.5rem + 0.3vw); margin-bottom: 0;">
+                                        Segment_(m)
+                                    </label>
+                                    <input type="text" class="form-control" id="SegmentLength" placeholder="distance..."
+                                        disabled style="font-size: calc(0.5rem + 0.3vw);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-6 mb-2">
+                                <label for="RoadwayName_FR" class="form-label"
+                                    style="font-size: calc(0.5rem + 0.3vw)">Rues principal</label>
+                                <input class="form-control" list="datalist_StreetFR_01" id="RoadwayName_FR"
+                                    placeholder="rue 1030..." style="font-size: calc(0.4rem + 0.3vw); height: 30px;">
+                                <datalist id="datalist_StreetFR_01"></datalist>
+                            </div>
+
+                            <div class="col-6 mb-2">
+                                <label for="RoadwayName_NL" class="form-label"
+                                    style="font-size: calc(0.5rem + 0.3vw)">Nom Voirie NL</label>
+                                <input type="text" class="form-control" id="RoadwayName_NL"
+                                    placeholder="nom voirie NL..." disabled style="font-size: calc(0.4rem + 0.3vw)">
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <div class="col-6 mb-2">
+                                <label for="RoadwayName_FR_D" class="form-label"
+                                    style="font-size: calc(0.5rem + 0.3vw)">Debut Tronçon</label>
+                                <input class="form-control" list="datalist_StreetFR_02" id="RoadwayName_FR_D"
+                                    placeholder="rue 1030..." style="font-size: calc(0.4rem + 0.3vw); height: 30px;">
+                                <datalist id="datalist_StreetFR_02"></datalist>
+                            </div>
+
+                            <div class="col-6 mb-2">
+                                <label for="RoadwayName_FR_F" class="form-label"
+                                    style="font-size: calc(0.5rem + 0.3vw)">Fin Tronçon</label>
+                                <input class="form-control" list="datalist_StreetFR_02" id="RoadwayName_FR_F"
+                                    placeholder="rue 1030..." style="font-size: calc(0.4rem + 0.3vw); height: 30px;">
+                                <datalist id="datalist_StreetFR_02"></datalist>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr size=4>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-3 mb-3">
+                                <button id="btnSaveData" type="button" class="btn btn-success btn-sm"
+                                    onclick="SearchData_StreetSurfaces()">Intersection</button>
+                            </div>
+                            <div class="col-3 mb-3">
+                                <button id="btnReturn" type="button" class="btn btn-primary btn-sm"
+                                    style="background-color: #6b8ee0; border-color: #6b8ee0;" role="button"
+                                    onclick="Return()">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr size=4>
+
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <label
+                                style="font-size:1.2em; font-weight: bold; text-align: center; font-style:italic; background-color:white; color:black">
+                                Croisement de rues à Schaerbeek (Nodes)
+                            </label>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-5 mb-2">
+                                <div class="d-flex align-items-center">
+                                    <label for="Code_Node1030" class="form-label me-2"
+                                        style="font-size: calc(0.5rem + 0.3vw); margin-bottom: 0;">
+                                        Code_Node
+                                    </label>
+                                    <input type="text" class="form-control" id="Code_Node1030" placeholder="code..."
+                                        disabled style="font-size: calc(0.5rem + 0.3vw);">
+                                </div>
+                            </div>
+
+                            <div class="col-5 mb-2">
+                                <div class="d-flex align-items-center">
+                                    <label for="Number_SharedStreet1030" class="form-label me-2"
+                                        style="font-size: calc(0.5rem + 0.3vw); margin-bottom: 0;">
+                                        Total_Rues
+                                    </label>
+                                    <input type="text" class="form-control" id="Number_SharedStreet1030"
+                                        placeholder="total..." disabled style="font-size: calc(0.5rem + 0.3vw);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container"></div>
+                    <div class="col-12 mb-2">
+                        <label for="Code_SharedStreet1030" class="form-label"
+                            style="font-size: calc(0.5rem + 0.3vw)">Code de Rues Partagée</label>
+                        <input type="text" class="form-control" id="Code_SharedStreet1030"
+                            placeholder="code rue partagée..." disabled
+                            style="font-size: calc(0.5rem + 0.3vw); height: 40px;">
+                    </div>
+
+                    <div class="col-12 mb-2">
+                        <label for="Name_SharedStreet1030" class="form-label" style="font-size: calc(0.5rem + 0.3vw);">
+                            Nom de Rues Partagée
+                        </label>
+                        <textarea class="form-control" id="Name_SharedStreet1030" placeholder="nom rue partagée..."
+                            disabled rows="3" style="font-size: calc(0.5rem + 0.3vw); height: 100px;"></textarea>
+                    </div>
+
+                    <hr size=4>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-5 mb-2">
+                                <button id="btnProjectsChantiers" type="button" class="btn btn-success btn-sm"
+                                    style="background-color: #d453a7; border-color: #d453a7"
+                                    onclick="ProjectsChantiers()">Projects
+                                    Chantiers</button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr size=4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <div id="HTML_Footer">
+        <br>
+        <footer id="footer">
+            <span>
+                <a>© 2021 </a><a href="mailto:ihhilal@gmail.com " style="color: #eea4a4 ">I.H.Hilal</a>
+                <a>Powered for the <a href="https://www.1030.be/ " style="color: #eea4a4 ">commune de
+                        Schaerbeek</a><br>
+                    <a>The content of this page is under the Creative Commons license, <br>
+                        full information is available
+                        <a target="_blank " href="https://creativecommons.org/licenses/by-nc-sa/4.0/ "
+                            style="color: #eea4a4 ">here.</a><br>
+                        <a rel="license " href="https://creativecommons.org/licenses/by-nc-sa/4.0/ ">
+                            <img alt="Licencia Creative Commons " style="border-width:0 " src="images/by-nc-sa.eu.png "
+                                width="50 " height="20 "></a>
+            </span>
+        </footer>
+    </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="databases/SchaerbekBorders/LimitesSchaerbeekQuartiers_Contour.js"></script>
+    <script src="databases/SchaerbekBorders/LimitesSchaerbeek_Contour.js"></script>
+
+
+    <script src="databases/URBIS/URBIS_OSIRIS_StreetSurfaces_GroupStreet_OnlyNodes.js"></script>
+    <script src="databases/URBIS/URBIS_OSIRIS_StreetSurfaces_OnlyStreetSurfaces_Segments.js"></script>
+    <script src="databases/URBIS/URBIS_OSIRIS_StreetSurfaces_SharedStreetNodes.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script src="js/lib/leaflet.markercluster.js"></script>
+    <script src="js/lib/GpPluginLeaflet.js"></script>
+    <script src="https://unpkg.com/esri-leaflet@2.5.3/dist/esri-leaflet.js"
+        integrity="sha512-K0Vddb4QdnVOAuPJBHkgrua+/A9Moyv8AQEWi0xndQ+fqbRfAFd47z4A9u1AW/spLO0gEaiE1z98PK1gl5mC5Q=="
+        crossorigin=""></script>
+    <script src="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.js"
+        integrity="sha512-HrFUyCEtIpxZloTgEKKMq4RFYhxjJkCiF5sDxuAokklOeZ68U2NPfh4MFtyIVWlsKtVbK5GD2/JzFyAfvT5ejA=="
+        crossorigin=""></script>
+    <script src="js/lib/easy-button.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/index_tiles.js"></script>
+    <script src="js/index_clusters_Chantier1030.js"></script>
+    <script src="js/index_ClearData_ProjectsChantier1030.js"></script>
+
+    <!-- Use Refactored JS -->
+    <script src="js/index_DataFilter_StreetSurface_URBIS.js"></script>
+    <script src="js/index_controlsFilter_StreetSurfaces_URBIS.js"></script>
+    <script src="js/datalists_script_urbis.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var fields = [
+                'Code_Roadway1030', 'Code_Street1030', 'RoadwayName_FR',
+                'RoadwayName_NL', 'TypeStreet', 'SegmentLength',
+                'Code_Node1030', 'Code_SharedStreet1030',
+                'Name_SharedStreet1030', 'Number_SharedStreet1030',
+                'RoadwayName_FR_D', 'RoadwayName_FR_F',
+            ];
+            fields.forEach(function (id) {
+                var val = localStorage.getItem(id + "_0");
+                if (val && document.getElementById(id)) {
+                    document.getElementById(id).value = val;
+                }
+            });
+            localStorage.clear();
+        });
+
+        function ProjectsChantiers() {
+            window.open("Carte_ProjectsChantiers1030_StreetSurfaces_02.html");
+            window.close();
+        }
+
+        function Return() {
+            window.location.href = "Carte_ProjectsChantiers1030_StreetSurfaces_00.html";
+        }
+    </script>
+</body>
+
+</html>

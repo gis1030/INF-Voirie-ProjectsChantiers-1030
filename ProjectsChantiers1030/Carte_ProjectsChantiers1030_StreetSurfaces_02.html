@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ChantiersFuturs Schaerbeek</title>
+    <link rel="shortcut icon" href="images/ih2.ico" type="image/x-icon">
+    <meta http-equiv="content type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ïe=edge">
+    <meta charset="utf-8" />
+
+    <!-- Librerie Leaflet  https://unpkg.com/leaflet@1.7.1/dist/leaflet.css -->
+    <!-- <link rel="stylesheet" href="css/leaflet.css" /> -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+
+    <!-- Extension  Esri Leaflet Geocoder  -->
+    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.css"
+        integrity="sha512-IM3Hs+feyi40yZhDH6kV8vQMg4Fh20s9OzInIIAc4nx7aMYMfo+IenRUekoYsHZqGkREUgx0VvlEsgm7nCDW9g=="
+        crossorigin="">
+
+    <!-- Librerie Leaflet.markercluster https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css -->
+    <!-- Librerie Leaflet.markercluster https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css -->
+    <link rel="stylesheet" href="css/MarkerCluster.css">
+    <link rel="stylesheet" href="css/MarkerCluster.Default.css">
+
+    <!-- Extension Geoportail pour Leaflet http://ignf.github.io/geoportal-extensions/leaflet-latest/dist/GpPluginLeaflet.css -->
+    <link rel="stylesheet" href="css/GpPluginLeaflet.css" />
+
+    <!-- Librerie Leaflet.EasyButton : https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css -->
+    <link rel="stylesheet" href="css/easy-button.css">
+
+    <!-- Librerie Leaflet.draw : https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css 
+        <link rel="stylesheet" href="css/leaflet.draw.css" /> -->
+
+    <!-- Libreria de estilo Bootstrape-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- bibliothèque interne CSS -->
+    <link rel="stylesheet" href="css/style_html_c1030.css">
+    <link rel="stylesheet" href="css/style_clusters.css">
+
+    <style>
+
+    </style>
+</head>
+
+<body id="ALL_HTML">
+    <div id="Internal_Body">
+        <div id="HTML_Heading">
+            <header class="page-header">
+                <h1>
+                    Coordination des Chantiers à Schaerbeek
+                </h1>
+            </header>
+            <br>
+        </div>
+
+        <div id="Region00">
+            <div id="Region04">
+                <div id="maCarte"></div>
+                <!--
+                <div class="info-panel">
+                    <h4>Chantiers 1030</h4>
+                    <p>Utilisez les outils de dessin pour créer des polygones représentant les travaux à réaliser sur la
+                        commune de Schaerbeek.</p>
+
+                    <button id="save-button">Guardar Mapa</button>
+                    <button id="load-button">Cargar Ejemplo</button>
+                </div>
+                -->
+            </div>
+            <div id="myTable"></div>
+        </div>
+
+        <div id="Region01">
+            <div class="container">
+                <div class="row">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <label style="font-size:1.2em; font-weight: bold; text-align: center; font-style:italic;
+                            background-color:white;
+                            color:black">Données sur les chantiers à Schaerbeek</label>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-4 mb-0">
+                                <label for="Chantier1030" class="form-label"
+                                    style="font-size: calc(0.5rem + 0.3vw)">Chantier 1030</label>
+                                <input type="text" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
+                                    id="Chantier1030" placeholder="id 1030..." style="font-size:13px">
+                            </div>
+
+                            <div class="col-4 mb-2">
+                                <label for="ChantierOsiris" class="form-label"
+                                    style="font-size: calc(0.5rem + 0.3vw)">Chantier Osiris</label>
+                                <input type="text" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
+                                    id="ChantierOsiris" placeholder="B1 Osiris..." style="font-size:13px" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-4 mb-2">
+                                <label for="DateDebutChantier" class="form-label"
+                                    style="font-size: calc(0.5rem + 0.3vw)">Debut Chantier</label>
+                                <input type="text" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
+                                    id="DateDebutChantier" placeholder="date debut..." style="font-size:13px" disabled>
+                            </div>
+                            <div class="col-4 mb-2">
+                                <label for="DateFinChantier" class="form-label"
+                                    style="font-size: calc(0.5rem + 0.3vw)">Fin Chantier</label>
+                                <input type="text" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
+                                    id="DateFinChantier" placeholder="date fin..." style="font-size:13px" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr size=3>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-12 mb-2">
+                                <label for="Impetrant" class="form-label"
+                                    style="font-size: calc(0.5rem + 0.3vw)">Demandeur du chantier</label>
+                                <input type="text" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
+                                    id="Impetrant" placeholder="gestionaire..." style="font-size:13px" disabled>
+                            </div>
+
+                            <div class="col-8 mb-2">
+                                <label for="NatureChantier" class="form-label"
+                                    style="font-size: calc(0.5rem + 0.3vw)">Nature de travaux</label>
+                                <input type="text" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
+                                    id="NatureChantier" placeholder="reference interne.." style="font-size:13px"
+                                    disabled>
+                            </div>
+
+                            <div class="col-4 mb-2">
+                                <label for="FermetureRue" class="form-label"
+                                    style="font-size: calc(0.5rem + 0.3vw)">Fermeture de Rue</label>
+                                <input type="text" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
+                                    id="FermetureRue" placeholder="..." style="font-size:13px" disabled>
+                            </div>
+
+                            <div class="col-12 mb-2">
+                                <label for="RemarqueChantier" class="form-label"
+                                    style="font-size: calc(0.5rem + 0.3vw)">Remarque du chantier</label>
+                                <input type="text" class="form-control"
+                                    style="font-size: calc(0.4rem + 0.3vw); height: 50px;" id="RemarqueChantier"
+                                    placeholder="remarque..." style="font-size:13px" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr size=3>
+                    <div class="container">
+                        <div class="col-12 mb-1">
+                            <label for="Rues1030" class="form-label" style="font-size: calc(0.5rem + 0.3vw)">Rues des
+                                chantiers</label>
+                            <input type="text" class="form-control" style="font-size: calc(0.4rem + 0.3vw);"
+                                id="Rues1030" placeholder="rue 1030..." style="font-size:13px" disabled>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-6 mb-2">
+                                <label for="TronconDebut1030" class="form-label"
+                                    style="font-size: calc(0.5rem + 0.3vw)">Debut tronçon</label>
+                                <input type="text" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
+                                    id="TronconDebut1030" placeholder="Debut..." style="font-size:13px" disabled>
+                            </div>
+
+                            <div class="col-6 mb-2">
+                                <label for="TronconFin1030" class="form-label"
+                                    style="font-size: calc(0.5rem + 0.3vw)">Fin
+                                    tronçon</label>
+                                <input type="text" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
+                                    id="TronconFin1030" placeholder="Fin..." style="font-size:13px" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr size=4>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-4 mb-2">
+                                <button id="btnModifierData" class="btn btn-primary btn-sm"
+                                    style="background-color: #35ceb9; border-color: #35ceb9" role="button"
+                                    onclick="FilterData1030()">Filtre Data</button>
+                            </div>
+                            <div class="col-3 mb-2">
+                                <button id="btnClear" type="button" class="btn btn-primary btn-sm"
+                                    style="background-color: #6b8ee0; border-color: #6b8ee0;" role="button"
+                                    onclick="ClearData01B()">Clear</button>
+                            </div>
+                            <div class="row justify-content-center"></div>
+                            <div class="col-5 mb-2">
+                                <button id="btnIntersectionStreet" class="btn btn-primary btn-sm"
+                                    style="background-color: #d453a7; border-color: #d453a7" role="button"
+                                    onclick="IntersectionStreet1030()">Intersection rues </button>
+                            </div>
+                        </div>
+                        <hr size=4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="HTML_Footer">
+        <br>
+        <footer id="footer">
+            <span>
+                <a>© 2021 </a></a><a href="mailto:ihhilal@gmail.com " style="color: #eea4a4 ">I.H.Hilal</a>
+                <a>Powered for the <a href="https://www.1030.be/ " style="color: #eea4a4 ">commune de
+                        Schaerbeek</a><br>
+                    <a>The content of this page is under the Creative Commons license, <br>
+                        full information is available
+                        <a target="_blank " href="https://creativecommons.org/licenses/by-nc-sa/4.0/ "
+                            style="color: #eea4a4 ">here.</a><br>
+                        <a rel="license " href="https://creativecommons.org/licenses/by-nc-sa/4.0/ ">
+                            <img alt="Licencia Creative Commons " style="border-width:0 " src="images/by-nc-sa.eu.png "
+                                width="50 " height="20 "></a>
+            </span>
+        </footer>
+    </div>
+    </div>
+
+    <div id="JavaScript_Libraries">
+        <div id="GeoJSON_Data">
+            <!-- Fichiers Javascript Limites de Schaerbeek  -->
+            <script src="databases/SchaerbekBorders/LimitesSchaerbeekQuartiers_Contour.js"
+                type="text/javascript"></script>
+            <!-- Fichiers Javascript Limites de Schaerbeek -->
+            <script src="databases/SchaerbekBorders/LimitesSchaerbeek_Contour.js" type="text/javascript"></script>
+
+            <!-- Fichiers Javascript Données URBIS_OSIRIS -->
+            <!-- <script src="databases/URBIS/URBIS_OSIRIS_StreetSurfaces_OnlyStreetSurfaces.js"
+                type="text/javascript"></script>  -->
+
+            <script src="databases/URBIS/URBIS_OSIRIS_StreetSurfaces_OnlyStreetSurfaces_Segments.js"
+                type="text/javascript"></script>
+
+            <script src="databases/URBIS/URBIS_OSIRIS_StreetSurfaces_SharedStreetNodes.js"
+                type="text/javascript"></script>
+
+            <!-- Fichiers Javascript Projets Futurs Donnes OSIRIS -->
+            <script src="databases/Chantiers1030_ProjectFutur.js" type="text/javascript"></script>
+
+            type="text/javascript"></script>
+        </div>
+
+        <div id="JavaScript_ExternalLibraries">
+            <!-- Fichiers Javascript leaflet -->
+            <!-- <script src="js/lib/leaflet.js"></script> -->
+            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+                integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+                crossorigin=""></script>
+
+            <!-- Librerie Javascript Leaflet.markercluster https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js  -->
+            <script src="js/lib/leaflet.markercluster.js"></script>
+
+            <!-- Librerie Javascript Leaflet.MousePosition http://ignf.github.io/geoportal-extensions/leaflet-latest/dist/GpPluginLeaflet.js -->
+            <script src="js/lib/GpPluginLeaflet.js"></script>
+
+            <!-- Librerie Javascript Esri Leaflet Geocoder -->
+            <script src="https://unpkg.com/esri-leaflet@2.5.3/dist/esri-leaflet.js"
+                integrity="sha512-K0Vddb4QdnVOAuPJBHkgrua+/A9Moyv8AQEWi0xndQ+fqbRfAFd47z4A9u1AW/spLO0gEaiE1z98PK1gl5mC5Q=="
+                crossorigin=""></script>
+            <script src="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.js"
+                integrity="sha512-HrFUyCEtIpxZloTgEKKMq4RFYhxjJkCiF5sDxuAokklOeZ68U2NPfh4MFtyIVWlsKtVbK5GD2/JzFyAfvT5ejA=="
+                crossorigin=""></script>
+
+            <!-- Librerie Javascript Leaflet.EasyButton https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js -->
+            <script src="js/lib/easy-button.js"></script>
+
+            <!-- Librerie Javascript Leaflet.Draw https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js 
+            <script src="js/leaflet.draw.js"></script> -->
+
+            <!-- Libreria javascript de Bootstrap-->
+            <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> -->
+            <script src="js/bootstrap.bundle.min.js"></script>
+
+            <!-- bibliothèque interne JS -->
+            <script src="js/index_tiles.js"></script>
+            <script src="js/index_Data_StreetSurfaces1030.js"></script>
+            <script src="js/index_clusters_Chantier1030.js"></script>
+            <script src="js/index_controls_StreetSurfaces1030.js"></script>
+            <script src="js/index_ClearData_ProjectsChantier1030.js"></script>
+            <!---->
+
+            <script>
+                // ++++++++ URBIS ++++++++
+                function LocalData1030_URBIS() {
+                    localStorage.setItem("CodeVoirie_0", document.getElementById("CodeVoirie").value);
+                    localStorage.setItem("NomVoirie_0", document.getElementById("NomVoirie").value);
+                }
+                function FilterData1030_URBIS() {
+                    LocalData1030_URBIS();
+
+                    window.open("Carte_ProjectsChantiers1030_StreetSurfaces_02.html");
+                    window.close();
+                }
+                function IntersectionStreet1030() {
+                    window.open("Carte_ProjectsChantiers1030_StreetSurfaces_00.html");
+                    window.close();
+                }                
+            </script>
+
+            <script>
+                function UpperLetters(e) {
+                    e.value = e.value.toUpperCase();
+                }
+
+                function LowerLetters(e) {
+                    e.value = e.value.toLowerCase();
+                }
+
+                function LocalData1030() {
+                    localStorage.setItem("Chantier1030_0", document.getElementById("Chantier1030").value);
+                    localStorage.setItem("ChantierOsiris_0", document.getElementById("ChantierOsiris").value);
+                    localStorage.setItem("DateDebutChantier_0", document.getElementById("DateDebutChantier").value);
+                    localStorage.setItem("DateFinChantier_0", document.getElementById("DateFinChantier").value);
+                    localStorage.setItem("Impetrant_0", document.getElementById("Impetrant").value);
+                    localStorage.setItem("NatureChantier_0", document.getElementById("NatureChantier").value);
+                    localStorage.setItem("RemarqueChantier_0", document.getElementById("RemarqueChantier").value);
+                    localStorage.setItem("Rues1030_0", document.getElementById("Rues1030").value);
+                    localStorage.setItem("TronconDebut1030_0", document.getElementById("TronconDebut1030").value);
+                    localStorage.setItem("TronconFin1030_0", document.getElementById("TronconFin1030").value);
+                    localStorage.setItem("FermetureRue_0", document.getElementById("FermetureRue").value);
+
+                    //localStorage.setItem("DateDebutChantier_0", dateValue(document.getElementById("DateDebutChantier").value));
+                    //localStorage.setItem("DateFinChantier_0", dateValue(document.getElementById("DateFinChantier").value));
+                }
+                function FilterData1030() {
+                    LocalData1030();
+
+                    window.open("Carte_ProjectsChantiers1030_StreetSurfaces_03.html");
+                    window.close();
+                }
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>
