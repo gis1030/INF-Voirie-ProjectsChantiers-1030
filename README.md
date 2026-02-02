@@ -2,11 +2,11 @@
 Public works projects in the municipality of Schaerbeek are registered in the database of the Road Works Service of the Infrastructure Department.
 
 The map allows projects to be grouped according to the following criteria:
-📍Start and end dates of the work
-📍Name of the responsible companies
-📍Nature of the work
-📍Temporary closure of the public road
-📍Segments of public road affected
+📍Start and end dates of the work.
+📍Name of the responsible companies.
+📍Nature of the work.
+📍Temporary closure of the public road.
+📍Segments of public road affected.
 
 ## Type od Study
 Cartography of public works projects on municipal roads in Schaerbeek.
