@@ -1016,6 +1016,12 @@ function SearchData() {
                 ].includes(nom);
             },
             style: function (feature) {
+                // Debug: ver el valor de FermetureRue
+                // console.log("FermetureRue value:", feature.properties.FermetureRue, "Type:", typeof feature.properties.FermetureRue);
+
+                if (feature.properties.FermetureRue && feature.properties.FermetureRue.trim().toLowerCase() === "oui") {
+                    return PolygonStyle_StreetClosed;
+                }
                 var nom = feature.properties.NomImpetrant;
                 switch (nom) {
                     case "BELIRIS": return PolygonStyle_BELIRIS;
@@ -1044,6 +1050,7 @@ function SearchData() {
                     case "VIVAQUA RÉPARTITION": return PolygonStyle_VIVAQUA_REP;
                     case "VOO": return PolygonStyle_VOO;
                     case "WYRE": return PolygonStyle_WYRE;
+                    default: return PolygonStyle_DeepPink;
                 }
             },
             onEachFeature: onEachFeature,
@@ -1242,7 +1249,7 @@ function crearCapaImpetrant(label, StyleImpetrant, StyleStreetClosed, geoData) {
 
     // 2. Contamos cuántos elementos pasaron el filtro
     const numeroElementos = capa.getLayers().length;
-    console.log("Se han cargado " + numeroElementos + " elementos para " + label);
+    //console.log("Se han cargado " + numeroElementos + " elementos para " + label);
     return capa;
 }
 
@@ -1259,7 +1266,7 @@ function crearCapaImpetrant_ClosedStreet(StyleImpetrant, StyleStreetClosed, geoD
     });
 
     // 2. Reportamos el total de elementos cargados
-    console.log("Capa creada con " + capa.getLayers().length + " elementos totales.");
+    //console.log("Capa creada con " + capa.getLayers().length + " elementos totales.");
     return capa;
 }
 
@@ -1275,6 +1282,6 @@ function crearCapaImpetrantSimple(label, StyleImpetrant, geoData) {
 
     // Lógica del panel informativo
     const numeroElementos = capa.getLayers().length;
-    console.log("Se han cargado " + numeroElementos + " elementos para " + label);
+    //console.log("Se han cargado " + numeroElementos + " elementos para " + label);
     return capa;
 }
