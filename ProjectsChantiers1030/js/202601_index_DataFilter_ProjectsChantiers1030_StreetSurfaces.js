@@ -15,8 +15,8 @@ const PolygonStyle_ChantierBlue = createPolygonStyle({ weight: 3, color: "#3484c
 
 // En uso
 // ++++++ Limites de Schaerbeek ++++++++
-const PolygonStyle_Boundary01 = createPolygonStyle({ weight: 6, color: "#230759ff", opacity: 0.6, fillColor: "#230759ff", fillOpacity: 0.6 });
-const PolygonStyle_Boundary02 = createPolygonStyle({ weight: 2, color: "#3310ccff", opacity: 0.6, fillColor: "#3310ccff", fillOpacity: 0.6 });
+const PolygonStyle_Boundary01 = createPolygonStyle({ weight: 2, color: "#230759ff", opacity: 0.6, fillColor: "#230759ff", fillOpacity: 0.6 });
+const PolygonStyle_Boundary02 = createPolygonStyle({ weight: 3, color: "#088634", opacity: 0.6, fillColor: "#088634", fillOpacity: 0.6 });
 
 // ++++ URBIS +++++
 const PolygonStyle_DeepPink2 = createPolygonStyle({ opacity: 0.2, color: "#f184beff", fillColor: "#f184beff", fillOpacity: 0.2 });
@@ -26,6 +26,36 @@ const PolygonStyle_Chartreuse = createPolygonStyle({ opacity: 0.5, color: "#68c8
 //const PolygonStyle_Coral = createPolygonStyle({ weight: 1,  color: "#3484cbff", opacity: 0.2, fillColor: "#FF7F50",fillOpacity: 0.2 });
 const PolygonStyle_Coral = createPolygonStyle({ fillColor: "#FF7F50" });
 const PolygonStyle_DeepPink = createPolygonStyle({ color: "#000000", opacity: 0.3, fillColor: "#FF1493", fillOpacity: 0.7, weight: 1 });
+
+//Imlpetrantes
+const PolygonStyle_StreetClosed = { fillColor: "#ff0000", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+
+const PolygonStyle_BELIRIS = { fillColor: "#DA59DD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_BM_DEN = { fillColor: "#FFAB91", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_BM_DPV = { fillColor: "#FFAB91", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_BRUTELE = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_COLT = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_DIGI = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_DITP = { fillColor: "#E57373", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_ELIA = { fillColor: "#1976D2", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_EUROFIBER = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_INFRABEL = { fillColor: "#B0BEC5", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_IRISNET = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_PROXIMUS = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_SCHAERBEEK_AME_COMPLET = { fillColor: "#1B5E20", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_SCHAERBEEK_ASPHALTE = { fillColor: "#2E7D32", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_SCHAERBEEK_DAV = { fillColor: "#4CAF50", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_SCHAERBEEK_MARQUAGE = { fillColor: "#9CCC65", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_SCHAERBEEK_RENOVAS = { fillColor: "#CDDC39", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_SCHAERBEEK_TROTTOIRS = { fillColor: "#00C853", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_SIBELGA = { fillColor: "#BF360C", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_SIBELGA_EP = { fillColor: "#FFAB91", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_STIB = { fillColor: "#E3886B", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_VIVAQUA_ASS = { fillColor: "#FF9800", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_VIVAQUA_DIS = { fillColor: "#FFEB3B", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_VIVAQUA_REP = { fillColor: "#795548", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_VOO = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_WYRE = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
 
 // on personnalise les marqueurs
 const DataIcon05 = L.icon({
@@ -188,34 +218,6 @@ if (typeof ChantierLabel === 'undefined' || OsirisLabel === 'undefined' || DateD
 
     // +++BEGIN++ Impetrants +++++++++
     // +++BEGIN++ Impetrants +++++++++
-    const PolygonStyle_StreetClosed = { fillColor: "#ff0000", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-
-    const PolygonStyle_BELIRIS = { fillColor: "#DA59DD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_BM_DEN = { fillColor: "#FFAB91", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_BM_DPV = { fillColor: "#FFAB91", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_BRUTELE = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_COLT = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_DIGI = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_DITP = { fillColor: "#E57373", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_ELIA = { fillColor: "#1976D2", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_EUROFIBER = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_INFRABEL = { fillColor: "#B0BEC5", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_IRISNET = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_PROXIMUS = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_SCHAERBEEK_AME_COMPLET = { fillColor: "#1B5E20", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_SCHAERBEEK_ASPHALTE = { fillColor: "#2E7D32", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_SCHAERBEEK_DAV = { fillColor: "#4CAF50", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_SCHAERBEEK_MARQUAGE = { fillColor: "#9CCC65", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_SCHAERBEEK_RENOVAS = { fillColor: "#CDDC39", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_SCHAERBEEK_TROTTOIRS = { fillColor: "#00C853", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_SIBELGA = { fillColor: "#BF360C", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_SIBELGA_EP = { fillColor: "#FFAB91", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_STIB = { fillColor: "#E3886B", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_VIVAQUA_ASS = { fillColor: "#FF9800", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_VIVAQUA_DIS = { fillColor: "#FFEB3B", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_VIVAQUA_REP = { fillColor: "#795548", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_VOO = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
-    const PolygonStyle_WYRE = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
 
     ImpetrantLabel = "BELIRIS"
     var Impetrant_01 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_BELIRIS, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
@@ -982,7 +984,68 @@ function SearchData() {
 
     if (jsonSEARCH_Polygons.features.length !== 0) {
         var GroupALL_Chantiers = L.geoJSON([jsonSEARCH_Polygons], {
-            style: PolygonStyle_DeepPink,
+            filter: function (feature) {
+                var nom = feature.properties.NomImpetrant;
+                return [
+                    "BELIRIS",
+                    "BM-DEN",
+                    "BM-DPV",
+                    "BRUTELE",
+                    "COLT",
+                    "DITP",
+                    "ELIA",
+                    "EUROFIBER",
+                    "INFRABEL",
+                    "IRISNET",
+                    "PROXIMUS",
+                    "SCHAERBEEK AMÉNAGEMENT COMPLET",
+                    "SCHAERBEEK ASPHALTE",
+                    "SCHAERBEEK DAV",
+                    "SCHAERBEEK MARQUAGE",
+                    "SCHAERBEEK RENOVAS",
+                    "SCHAERBEEK TROTTOIRS",
+                    "SIBELGA",
+                    "SIBELGA EP",
+                    "VIVAQUA ASSAINISSEMENT",
+                    "VIVAQUA DISTRIBUTION",
+                    "VIVAQUA RÉPARTITION",
+                    "VOO",
+                    "WYRE",
+                    "DIGI",
+                    "STIB",
+                ].includes(nom);
+            },
+            style: function (feature) {
+                var nom = feature.properties.NomImpetrant;
+                switch (nom) {
+                    case "BELIRIS": return PolygonStyle_BELIRIS;
+                    case "BM-DEN": return PolygonStyle_BM_DEN;
+                    case "BM-DPV": return PolygonStyle_BM_DPV;
+                    case "BRUTELE": return PolygonStyle_BRUTELE;
+                    case "COLT": return PolygonStyle_COLT;
+                    case "DIGI": return PolygonStyle_DIGI;
+                    case "DITP": return PolygonStyle_DITP;
+                    case "ELIA": return PolygonStyle_ELIA;
+                    case "EUROFIBER": return PolygonStyle_EUROFIBER;
+                    case "INFRABEL": return PolygonStyle_INFRABEL;
+                    case "IRISNET": return PolygonStyle_IRISNET;
+                    case "PROXIMUS": return PolygonStyle_PROXIMUS;
+                    case "SCHAERBEEK AMÉNAGEMENT COMPLET": return PolygonStyle_SCHAERBEEK_AME_COMPLET;
+                    case "SCHAERBEEK ASPHALTE": return PolygonStyle_SCHAERBEEK_ASPHALTE;
+                    case "SCHAERBEEK DAV": return PolygonStyle_SCHAERBEEK_DAV;
+                    case "SCHAERBEEK MARQUAGE": return PolygonStyle_SCHAERBEEK_MARQUAGE;
+                    case "SCHAERBEEK RENOVAS": return PolygonStyle_SCHAERBEEK_RENOVAS;
+                    case "SCHAERBEEK TROTTOIRS": return PolygonStyle_SCHAERBEEK_TROTTOIRS;
+                    case "SIBELGA": return PolygonStyle_SIBELGA;
+                    case "SIBELGA EP": return PolygonStyle_SIBELGA_EP;
+                    case "STIB": return PolygonStyle_STIB;
+                    case "VIVAQUA ASSAINISSEMENT": return PolygonStyle_VIVAQUA_ASS;
+                    case "VIVAQUA DISTRIBUTION": return PolygonStyle_VIVAQUA_DIS;
+                    case "VIVAQUA RÉPARTITION": return PolygonStyle_VIVAQUA_REP;
+                    case "VOO": return PolygonStyle_VOO;
+                    case "WYRE": return PolygonStyle_WYRE;
+                }
+            },
             onEachFeature: onEachFeature,
         }); // .addTo(carte); ; inutile lors de lúti;isation des clusters
         GroupPolygonsMap1030_ALL.addLayer(GroupALL_Chantiers)
@@ -993,6 +1056,24 @@ function SearchData() {
             MarkerDataView(clickedMarker)
         });
     };
+
+    // Version Original
+    /* 
+        if (jsonSEARCH_Polygons.features.length !== 0) {
+            var GroupALL_Chantiers = L.geoJSON([jsonSEARCH_Polygons], {
+                style: PolygonStyle_DeepPink,
+                onEachFeature: onEachFeature,
+            }); // .addTo(carte); ; inutile lors de lúti;isation des clusters
+            GroupPolygonsMap1030_ALL.addLayer(GroupALL_Chantiers)
+    
+            GroupALL_Chantiers.on("click", function (event) {
+                var clickedMarker = event.layer;
+                // console.log(clickedMarker)
+                MarkerDataView(clickedMarker)
+            });
+        };
+    */
+
 };
 
 
