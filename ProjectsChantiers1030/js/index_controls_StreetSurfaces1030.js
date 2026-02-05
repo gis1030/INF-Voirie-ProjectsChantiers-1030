@@ -68,32 +68,32 @@ const GroupDataGeometry_Section_URBIS = {
 const GroupDataALL_Impetrants1030 = {
     //"<b>ALL</b></br>": GroupALL_Chantiers
     "<b>Toutes les Impetrants</b></br>": GroupALL_Chantiers_S,
-    "<b>BELIRIS</b></br>": Impetrant_01,
-    "<b>BM-DEN</b></br>": Impetrant_02,
-    "<b>BM-DPV</b></br>": Impetrant_03,
-    "<b>BRUTELE</b></br>": Impetrant_04, //NON
-    "<b>COLT</b></br>": Impetrant_05,
-    "<b>DIGI</b></br>": Impetrant_06,
-    "<b>DITP</b></br>": Impetrant_07,  //NON
-    "<b>ELIA</b></br>": Impetrant_08,
-    "<b>EUROFIBER</b></br>": Impetrant_09,
-    "<b>INFRABEL</b></br>": Impetrant_10,  //NON
-    "<b>IRISNET</b></br>": Impetrant_11,
-    "<b>PROXIMUS</b></br>": Impetrant_12,
-    "<b>SCHAERBEEK AMÉNAGEMENT COMPLET</b></br>": Impetrant_13,
-    "<b>SCHAERBEEK ASPHALTE</b></br>": Impetrant_14,
-    "<b>SCHAERBEEK DAV</b></br>": Impetrant_15,
-    "<b>SCHAERBEEK MARQUAGE</b></br>": Impetrant_16,  //NON
-    "<b>SCHAERBEEK RENOVAS</b></br>": Impetrant_17,
-    "<b>SCHAERBEEK TROTTOIRS</b></br>": Impetrant_18,
-    "<b>SIBELGA</b></br>": Impetrant_19,
-    "<b>SIBELGA EP</b></br>": Impetrant_20,
-    "<b>STIB</b></br>": Impetrant_21,
-    "<b>VIVAQUA ASSAINISSEMENT</b></br>": Impetrant_22,
-    "<b>VIVAQUA DISTRIBUTION</b></br>": Impetrant_23,
-    "<b>VIVAQUA RÉPARTITION</b></br>": Impetrant_24,
-    "<b>VOO</b></br>": Impetrant_25,
-    "<b>WYRE</b></br>": Impetrant_26,
+    "<img src='legend/BELIRIS.png' width='12px'/><b> BELIRIS</b></br>": Impetrant_01,
+    "<img src='legend/BM_DEN.png' width='12px'/><b> BM-DEN</b></br>": Impetrant_02,
+    "<img src='legend/BM_DPV.png' width='12px'/><b> BM-DPV</b></br>": Impetrant_03,
+    "<img src='legend/BRUTELE.png' width='12px'/><b> BRUTELE</b></br>": Impetrant_04, //NON
+    "<img src='legend/COLT.png' width='12px'/><b> COLT</b></br>": Impetrant_05,
+    "<img src='legend/DIGI.png' width='12px'/><b> DIGI</b></br>": Impetrant_06,
+    "<img src='legend/DITP.png' width='12px'/><b> DITP</b></br>": Impetrant_07,  //NON
+    "<img src='legend/ELIA.png' width='12px'/><b> ELIA</b></br>": Impetrant_08,
+    "<img src='legend/EUROFIBER.png' width='12px'/><b> EUROFIBER</b></br>": Impetrant_09,
+    "<img src='legend/INFRABEL.png' width='12px'/><b> INFRABEL</b></br>": Impetrant_10,  //NON
+    "<img src='legend/IRISNET.png' width='12px'/><b> IRISNET</b></br>": Impetrant_11,
+    "<img src='legend/PROXIMUS.png' width='12px'/><b> PROXIMUS</b></br>": Impetrant_12,
+    "<img src='legend/SCHAERBEEK_AME_COMPLET.png' width='12px'/><b> SCHAERBEEK AMÉNAGEMENT COMPLET</b></br>": Impetrant_13,
+    "<img src='legend/SCHAERBEEK_ASPHALTE.png' width='12px'/><b> SCHAERBEEK ASPHALTE</b></br>": Impetrant_14,
+    "<img src='legend/SCHAERBEEK_DAV.png' width='12px'/><b> SCHAERBEEK DAV</b></br>": Impetrant_15,
+    "<img src='legend/SCHAERBEEK_MARQUAGE.png' width='12px'/><b> SCHAERBEEK MARQUAGE</b></br>": Impetrant_16,  //NON
+    "<img src='legend/SCHAERBEEK_RENOVAS.png' width='12px'/><b> SCHAERBEEK RENOVAS</b></br>": Impetrant_17,
+    "<img src='legend/SCHAERBEEK_TROTTOIRS.png' width='12px'/><b> SCHAERBEEK TROTTOIRS</b></br>": Impetrant_18,
+    "<img src='legend/SIBELGA.png' width='12px'/><b> SIBELGA</b></br>": Impetrant_19,
+    "<img src='legend/SIBELGA_EP.png' width='12px'/><b> SIBELGA EP</b></br>": Impetrant_20,
+    "<img src='legend/STIB.png' width='12px'/><b> STIB</b></br>": Impetrant_21,
+    "<img src='legend/VIVAQUA_ASS.png' width='12px'/><b> VIVAQUA ASSAINISSEMENT</b></br>": Impetrant_22,
+    "<img src='legend/VIVAQUA_DIS.png' width='12px'/><b> VIVAQUA DISTRIBUTION</b></br>": Impetrant_23,
+    "<img src='legend/VIVAQUA_REP.png' width='12px'/><b> VIVAQUA RÉPARTITION</b></br>": Impetrant_24,
+    "<img src='legend/VOO.png' width='12px'/><b> VOO</b></br>": Impetrant_25,
+    "<img src='legend/WYRE.png' width='12px'/><b> WYRE</b></br>": Impetrant_26,
 };
 
 const GroupDataALL_Chantiers1030 = {
