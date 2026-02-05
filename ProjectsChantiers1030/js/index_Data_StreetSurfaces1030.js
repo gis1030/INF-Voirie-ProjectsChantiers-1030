@@ -16,7 +16,7 @@ const PolygonStyle_ChantierBlue = createPolygonStyle({ weight: 3, color: "#3484c
 
 // En uso
 // ++++++ Limites de Schaerbeek ++++++++
-const PolygonStyle_Boundary01 = createPolygonStyle({ weight: 6, color: "#230759ff", opacity: 0.6, fillColor: "#230759ff", fillOpacity: 0.6 });
+const PolygonStyle_Boundary01 = createPolygonStyle({ weight: 2, color: "#230759ff", opacity: 0.6, fillColor: "#230759ff", fillOpacity: 0.6 });
 const PolygonStyle_Boundary02 = createPolygonStyle({ weight: 2, color: "#3310ccff", opacity: 0.6, fillColor: "#3310ccff", fillOpacity: 0.6 });
 
 // ++++ URBIS +++++
