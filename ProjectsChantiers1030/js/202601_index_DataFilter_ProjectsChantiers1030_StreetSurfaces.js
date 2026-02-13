@@ -16,7 +16,7 @@ const PolygonStyle_ChantierBlue = createPolygonStyle({ weight: 3, color: "#3484c
 // En uso
 // ++++++ Limites de Schaerbeek ++++++++
 const PolygonStyle_Boundary01 = createPolygonStyle({ weight: 2, color: "#230759ff", opacity: 0.6, fillColor: "#230759ff", fillOpacity: 0.6 });
-const PolygonStyle_Boundary02 = createPolygonStyle({ weight: 2, color: "#088634", opacity: 0.6, fillColor: "#088634", fillOpacity: 0.6 });
+const PolygonStyle_Boundary02 = createPolygonStyle({ weight: 3, color: "#088634", opacity: 0.6, fillColor: "#088634", fillOpacity: 0.6 });
 
 // ++++ URBIS +++++
 const PolygonStyle_DeepPink2 = createPolygonStyle({ opacity: 0.2, color: "#f184beff", fillColor: "#f184beff", fillOpacity: 0.2 });
@@ -657,20 +657,25 @@ function SearchData() {
 
         // Reporta los resultados
         if (!esValida1) {
-            console.log("La fecha es inválida.");
+            console.log("01. La fecha es inválida.");
+            ControlData = "ALL"
             DateDebutLabel_0 = new Date(2024, 0, 1);
             DateFinLabel_0 = new Date(2040, 12, 31);
             alert("Aucune date n'a été saisie pour les chantiers. \n Les dates de recherche sont définies entre 2024-01-01 et 2040-12-31. \n Modifiez les critères de recherche");
         } else {
-            console.log("La fecha es válida.");
+            console.log("02. La fecha es válida.");
             DateDebutLabel_0 = fechaStr1;
             DateFinLabel_0 = fechaStr1;
         }
     }
 
     //validarYReportarFechas_DosFechas(DateDebutLabel_0, DateFinLabel_0);
+    let ControlData = "Regular"
     validarYReportarFechas_UnaFecha(DateDebutLabel_0);
 
+    // Debug
+    //console.log("Filter Date Debut: " + DateDebutLabel_0);
+    //console.log("Filter Date Fin: " + DateFinLabel_0);
 
     // On remplace les valeurs vides par ALLData
 
@@ -717,10 +722,6 @@ function SearchData() {
         DateFinLabel_0 = "ALLData";
     }
 
-    // Debug
-    //console.log("Filter Date Debut: " + DateDebutLabel_0);
-    //console.log("Filter Date Fin: " + DateFinLabel_0);
-
     // items >> compteurs
     var k_ChantierLabel = 0;
     var k_OsirisLabel = 0;
@@ -752,6 +753,7 @@ function SearchData() {
     if (ChantierLabel === "ALLData") {
         if (DateDebutLabel_0 !== "ALLData") {
             console.log("Recherche Date Debut: " + DateDebutLabel_0);
+            console.log("Recherche Date Debut: " + DateFinLabel_0);
             mylist = [{ SearchLabel_01: DateDebutLabel_0 }, { SearchLabel_02: DateFinLabel_0 }];
 
             jsonSEARCH_Polygons = {};
@@ -759,11 +761,17 @@ function SearchData() {
             jsonSEARCH_Polygons.features = jsonALL_Polygons_00.features.filter(item => {
                 Date01 = new Date((item.properties.DateDebut));
                 Date02 = new Date((item.properties.DateFin));
-                if (
-                    (Date01 >= DateDebutLabel_0) &&
-                    (Date02 <= DateFinLabel_0)
-                )
-                    return true;
+                console.log("contol data :" + ControlData)
+
+                if (ControlData === "ALL") {
+                    if (Date01 >= DateDebutLabel_0 && Date02 <= DateFinLabel_0) {
+                        return true;
+                    }
+                } else {
+                    if (DateDebutLabel_0 >= Date01 && DateDebutLabel_0 <= Date02) {
+                        return true;
+                    }
+                }
             });
 
             jsonSEARCH = {};
@@ -1284,5 +1292,4 @@ function crearCapaImpetrantSimple(label, StyleImpetrant, geoData) {
     const numeroElementos = capa.getLayers().length;
     //console.log("Se han cargado " + numeroElementos + " elementos para " + label);
     return capa;
-
 }

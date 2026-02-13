@@ -618,18 +618,47 @@ function populateDatalist(listId, dataArray) {
     }
 }
 
+function ListaPropiedad(nombrePropiedad, origenDatos) {
+    const valoresUnicos = new Set();
+
+    // Nos aseguramos de tratar el origen como una lista, 
+    // por si el usuario pasa un array [ProjectsChantiers1030]
+    const fuentes = Array.isArray(origenDatos) ? origenDatos : [origenDatos];
+
+    fuentes.forEach(fuente => {
+        if (fuente && fuente.features) {
+            fuente.features.forEach(feature => {
+                // Accedemos al valor de la propiedad dentro de 'properties'
+                const valor = feature.properties[nombrePropiedad];
+
+                // Solo agregamos valores que no sean nulos o vacíos
+                if (valor !== undefined && valor !== null && valor !== "") {
+                    valoresUnicos.add(valor);
+                }
+            });
+        }
+    });
+
+    // Convertimos el Set a un Array y lo ordenamos alfabéticamente
+    return Array.from(valoresUnicos).sort();
+}
+
 // Evento que se dispara cuando el DOM está completamente cargado
+
+const streetNames1030_0 = ListaPropiedad("VoirieNom", [ProjectsChantiers1030]);
 document.addEventListener('DOMContentLoaded', (event) => {
     // Llama a la función para poblar el datalist 
-    populateDatalist('datalist_StreetFR', streetNames1030);
+    populateDatalist('datalist_StreetFR', streetNames1030_0);
 });
 
+const impetrantsNames1030_0 = ListaPropiedad("NomImpetrant", [ProjectsChantiers1030]);
 document.addEventListener('DOMContentLoaded', (event) => {
     // Llama a la función para poblar el datalist 
-    populateDatalist('datalist_Impetrants', impetrantsNames1030);
+    populateDatalist('datalist_Impetrants', impetrantsNames1030_0);
 });
 
+const fermetureRue1030_0 = ListaPropiedad("FermetureRue", [ProjectsChantiers1030]);
 document.addEventListener('DOMContentLoaded', (event) => {
     // Llama a la función para poblar el datalist 
-    populateDatalist('datalist_FermetureRue', fermetureRue1030);
+    populateDatalist('datalist_FermetureRue', fermetureRue1030_0);
 });
