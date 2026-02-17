@@ -23,5 +23,5 @@ Cartography of public works projects on municipal roads in Schaerbeek.
 The data presented corresponds to the public works projects submitted and analyzed by the Public Works and Streets Service of the Infrastructure Directorate of the municipality of Schaerbeek.
 
 ### Last Update
-02/02/2026.
+17/02/2026.
 
