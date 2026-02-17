@@ -96,6 +96,14 @@ const GroupDataALL_Impetrants1030 = {
     "<img src='legend/WYRE.png' width='12px'/><b> WYRE</b></br>": Impetrant_26,
 };
 
+// ++++++++++++++++++++++++++++++++++++++++++
+// ==== Chantiers1030 ValidDate =============
+// ++++++++++++++++++++++++++++++++++++++++++
+const GroupDataALL_Impetrants1030_ValidDate = {
+    "<b>Toutes les Impetrants</b></br>": GroupALL_Chantiers_S,
+    "<b>Date de chantier à définir</b></br>": GroupChantiersMap1030_D,
+};
+
 const GroupDataALL_Chantiers1030 = {
     "<b>Projects Chantiers</b></br>": GroupALL_Chantiers
 };
@@ -109,6 +117,7 @@ const GroupDataALL_Chantiers1030 = {
 const LControl04 = L.control.layers(CarteGroup, GroupDataGeometry_URBIS).addTo(carte);
 const LControl03 = L.control.layers(BonderySchaerbeek1030, Group_Bondery1030).addTo(carte);
 const LControl06 = L.control.layers(GroupDataALL_Impetrants1030).addTo(carte);
+const LControl07 = L.control.layers(GroupDataALL_Impetrants1030_ValidDate).addTo(carte);
 // ++++++++ Choix de cartes et Elements ++++++++
 
 // +++++++ Revient a la position initial ++++++++

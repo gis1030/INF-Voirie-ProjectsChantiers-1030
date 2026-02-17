@@ -1,5 +1,5 @@
 // BEGIN +++ Choix de cartes et Elements ++++++++
-var CarteGroupALL = {
+const CarteGroupALL = {
     "<b>OSM.fr Carte</b>": carte01,
     "<b>Google Terrain</b>": carte02,
     "<b>Google Streets</b>": carte03,
@@ -10,7 +10,7 @@ var CarteGroupALL = {
     "<b>Google Traffic</b>": carte08,
 };
 
-var CarteGroup = {
+const CarteGroup = {
     "<b>OSM.fr Carte</b>": carte01,
     "<b>Google Streets</b>": carte03,
     "<b>Google Satellite-Streets</b>": carte05,
@@ -31,31 +31,31 @@ const Group_Bondery1030 = {
 // ============ URBIS1030 Data ==============
 // ++++++++++++++++++++++++++++++++++++++++++
 
-var GroupDataALL_URBIS = {
+const GroupDataALL_URBIS = {
     "<b>Street Surfaces</b></br>": GroupALL_URBIS_NodesStreetSurfaces,
 };
 
-var GroupDataALL_URBIS_NodesSurfaces = {
+const GroupDataALL_URBIS_NodesSurfaces = {
     "<b>Street Surfaces</b></br>": GroupALL_URBIS_StreetSurfaces,
     "<b>Nodes Surfaces</b></br>": GroupALL_URBIS_NodesSurfaces,
 };
 
-var GroupDataStreet_URBIS = {
+const GroupDataStreet_URBIS = {
     "<b>Street Surfaces Polygons</b></br>": GroupPolygons_URBIS_StreetSurfaces,
     "<b>Street Surfaces MultiPolygons</b></br>": GroupMultiPolygon_URBIS_StreetSurfaces,
 };
 
-var GroupDataNodes_URBIS = {
+const GroupDataNodes_URBIS = {
     "<b>Nodes Surfaces Polygons</b></br>": GroupPolygons_URBIS_NodesSurfaces,
     "<b>Nodes Surfaces MultiPolygons</b></br>": GroupMultiPolygon_URBIS_NodesSurfaces,
 };
 
-GroupDataGeometry_URBIS = {
+const GroupDataGeometry_URBIS = {
     "<b>Street Surfaces</b></br>": GroupALL_URBIS_StreetSurfaces,
     "<b>Nodes Surfaces</b></br>": GroupALL_URBIS_NodesSurfaces,
 };
 
-GroupDataGeometry_Section_URBIS = {
+const GroupDataGeometry_Section_URBIS = {
     "<b>Street Surfaces</b></br>": GroupALL_URBIS_StreetSurfaces,
     "<b>Nodes Surfaces Polygons</b></br>": GroupPolygons_URBIS_NodesSurfaces,
     "<b>Nodes Surfaces MultiPolygons</b></br>": GroupMultiPolygon_URBIS_NodesSurfaces,
@@ -96,16 +96,25 @@ const GroupDataALL_Impetrants1030 = {
     "<b>WYRE</b></br>": Impetrant_26,
 };
 
-var GroupDataALL_Chantiers1030 = {
+// ++++++++++++++++++++++++++++++++++++++++++
+// ==== Chantiers1030 ValidDate =============
+// ++++++++++++++++++++++++++++++++++++++++++
+const GroupDataALL_Impetrants1030_ValidDate = {
+    "<b>Toutes les Impetrants</b></br>": GroupChantiersALL1030,
+    "<b>Date de chantier à définir</b></br>": GroupChantiersMap1030_D,
+};
+
+const GroupDataALL_Chantiers1030 = {
     "<b>Projects Chantiers</b></br>": GroupChantiersALL1030,
 };
 
-var GroupDataGeometry_Chantiers1030 = {
+const GroupDataGeometry_Chantiers1030 = {
     "<b>Toutes les Chantiers (Surface)</b></br>": GroupPolygonsMap1030_ALL,
 };
 
 const LControl04 = L.control.layers(CarteGroup, GroupDataGeometry_URBIS).addTo(carte);
 const LControl03 = L.control.layers(BonderySchaerbeek1030, Group_Bondery1030).addTo(carte);
+const LControl07 = L.control.layers(null, GroupDataALL_Impetrants1030_ValidDate).addTo(carte);
 //const LControl06 = L.control.layers(GroupDataALL_Impetrants1030).addTo(carte);
 
 //const LControl05 = L.control.layers(GroupDataGeometry_Chantiers1030, GroupDataALL_Chantiers1030).addTo(carte);
@@ -124,8 +133,8 @@ L.easyButton('<img src="images/home.png" width="26" height="26" >', function () 
 
 // ++BEGIN++ Géolocalisation +++++
 function onLocationFound(e) {
-    var radius = e.accuracy / 2;
-    var location = e.latlng
+    const radius = e.accuracy / 2;
+    const location = e.latlng
     L.marker(location).addTo(carte)
     L.circle(location, radius).addTo(carte);
 }
@@ -146,7 +155,7 @@ L.easyButton('<img src="images/gps-position.png" width="26" height="26" >', func
 // +++++++ Géolocalisation +++END++
 
 // ++BEGIN++ MousePosition Maps +++++
-var mousePoistion00 = L.geoportalControl.MousePosition({
+const mousePoistion00 = L.geoportalControl.MousePosition({
     position: 'bottomleft',
     collapsed: true,
     displayAltitude: false,
@@ -203,7 +212,7 @@ var route = L.geoportalControl.Route({
 // +++++++ MousePosition Map +++END++
 
 // ++BEGIN++ Esri Leafvar Geocoder +++++
-var searchControl = L.esri.Geocoding.geosearch({
+const searchControl = L.esri.Geocoding.geosearch({
     position: 'topleft',
     zoomToResult: true,
     useMapBounds: true,
@@ -214,8 +223,8 @@ var searchControl = L.esri.Geocoding.geosearch({
     placeholder: 'SVP, Entrez une adresse...'
 }).addTo(carte);
 
-var geocodeService = L.esri.Geocoding.geocodeService({});
-var layerGroup = L.layerGroup().addTo(carte);
+const geocodeService = L.esri.Geocoding.geocodeService({});
+const layerGroup = L.layerGroup().addTo(carte);
 carte.on('click', function (e) {
 
     geocodeService.reverse().latlng(e.latlng).run(function (error, result) {
@@ -223,9 +232,9 @@ carte.on('click', function (e) {
             return;
         }
         //var emplacement = convertToAddress(e.latlng);
-        var lngLatString = `${Math.round(result.latlng.lat * 100000) / 100000}, ${Math.round(result.latlng.lng * 100000) / 100000}`;
+        const lngLatString = `${Math.round(result.latlng.lat * 100000) / 100000}, ${Math.round(result.latlng.lng * 100000) / 100000}`;
         layerGroup.clearLayers();
-        marker = L.marker(result.latlng)
+        const marker = L.marker(result.latlng)
             .addTo(layerGroup) //.addTo(carte) l'utilisation de vette option permet au marqueur de rester sur la carte
             .bindPopup(`<dt>${lngLatString}</dt>` + `<dt>${result.address.LongLabel}</dt>`) // adresse avec les coordonnées gps 
             //.bindPopup(result.address.Match_addr) // adresse sans les coordonnées gps 

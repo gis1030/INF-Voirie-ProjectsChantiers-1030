@@ -1,64 +1,52 @@
+function clearElements(ids) {
+    if (!Array.isArray(ids)) return;
+    ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = "";
+    });
+}
+
 function ClearData() {
-    if (layerGroup) {
+    if (typeof layerGroup !== 'undefined' && layerGroup) {
         layerGroup.clearLayers();
     }
-    if (markerReal) {
+    if (typeof markerReal !== 'undefined' && markerReal) {
         carte.removeLayer(markerReal);
     }
 
-    document.getElementById("Chantier1030").value = ""
-    document.getElementById("ChantierOsiris").value = ""
-    document.getElementById("DateDebutChantier").value = ""
-    document.getElementById("DateFinChantier").value = ""
-    document.getElementById("Impetrant").value = ""
-    document.getElementById("NatureChantier").value = ""
-    document.getElementById("DescriptionChantier").value = ""
-    document.getElementById("Rues1030").value = ""
-    document.getElementById("CommentairesOsiris").value = ""
-    document.getElementById("DateDebutChantier_0").value = ""
-    document.getElementById("DateFinChantier_0").value = ""
-
+    const ids = [
+        "Chantier1030", "ChantierOsiris", "DateDebutChantier", "DateFinChantier",
+        "Impetrant", "NatureChantier", "DescriptionChantier", "Rues1030",
+        "CommentairesOsiris", "DateDebutChantier_0", "DateFinChantier_0"
+    ];
+    clearElements(ids);
 }
 
 function ClearData01() {
-    document.getElementById("Chantier1030").value = ""
-    document.getElementById("ChantierOsiris").value = ""
-    document.getElementById("DateDebutChantier").value = ""
-    document.getElementById("DateFinChantier").value = ""
-    document.getElementById("Impetrant").value = ""
-    document.getElementById("NatureChantier").value = ""
-    document.getElementById("DescriptionChantier").value = ""
-    document.getElementById("Rues1030").value = ""
-    document.getElementById("CommentairesOsiris").value = ""
-    document.getElementById("DateDebutChantier_0").value = ""
-    document.getElementById("DateFinChantier_0").value = ""
+    const ids = [
+        "Chantier1030", "ChantierOsiris", "DateDebutChantier", "DateFinChantier",
+        "Impetrant", "NatureChantier", "DescriptionChantier", "Rues1030",
+        "CommentairesOsiris", "DateDebutChantier_0", "DateFinChantier_0"
+    ];
+    clearElements(ids);
 };
 
 function ClearData01B() {
-    document.getElementById("Chantier1030").value = ""
-    document.getElementById("ChantierOsiris").value = ""
-    document.getElementById("DateDebutChantier").value = ""
-    document.getElementById("DateFinChantier").value = ""
-    document.getElementById("Impetrant").value = ""
-    document.getElementById("NatureChantier").value = ""
-    document.getElementById("DescriptionChantier").value = ""
-    document.getElementById("Rues1030").value = ""
-    document.getElementById("TronconDebut1030").value = ""
-    document.getElementById("TronconFin1030").value = ""
+    const ids = [
+        "Chantier1030", "ChantierOsiris", "DateDebutChantier", "DateFinChantier",
+        "Impetrant", "NatureChantier", "DescriptionChantier", "Rues1030",
+        "TronconDebut1030", "TronconFin1030"
+    ];
+    clearElements(ids);
 }
 
 function ClearData02() {
-    document.getElementById("Code_Roadway1030").value = ""
-    document.getElementById("Code_Street1030").value = ""
-    document.getElementById("RoadwayName_FR").value = ""
-    document.getElementById("RoadwayName_NL").value = ""
-    document.getElementById("TypeStreet").value = ""
-    document.getElementById("SegmentLength").value = ""
-
-    document.getElementById("Code_Node1030").value = ""
-    document.getElementById("Code_SharedStreet1030").value = ""
-    document.getElementById("Name_SharedStreet1030").value = ""
-    document.getElementById("Number_SharedStreet1030").value = ""
+    const ids = [
+        "Code_Roadway1030", "Code_Street1030", "RoadwayName_FR", "RoadwayName_NL",
+        "TypeStreet", "SegmentLength", "Code_Node1030", "Code_SharedStreet1030",
+        "Name_SharedStreet1030", "Number_SharedStreet1030"
+    ];
+    clearElements(ids);
 }
 
 function Return() {
@@ -80,52 +68,39 @@ function ClearDataSearch() {
     //     carte.removeLayer(markerReal);
     // }
 
-    document.getElementById("Chantier1030").value = ""
-    document.getElementById("ChantierOsiris").value = ""
-    document.getElementById("DateDebutChantier").value = ""
-    document.getElementById("DateFinChantier").value = ""
-    document.getElementById("Impetrant").value = ""
-    document.getElementById("NatureChantier").value = ""
-    document.getElementById("RemarqueChantier").value = ""
-    document.getElementById("Rues1030").value = ""
-    document.getElementById("TronconDebut1030").value = ""
-    document.getElementById("TronconFin1030").value = ""
-    document.getElementById("FermetureRue").value = ""
-    document.getElementById("CommentairesOsiris").value = ""
+    const ids = [
+        "Chantier1030", "ChantierOsiris", "DateDebutChantier", "DateFinChantier",
+        "Impetrant", "NatureChantier", "RemarqueChantier", "Rues1030",
+        "TronconDebut1030", "TronconFin1030", "FermetureRue", "CommentairesOsiris",
+        "DateDebutChantier_0"
+        //"DateFinChantier_0"
+    ];
+    clearElements(ids);
 
-    document.getElementById("DateDebutChantier_0").value = ""
-    //document.getElementById("DateFinChantier_0").value = ""
+    if (typeof LoadALLData !== 'undefined') LoadALLData();
+    RestoreDatalists();
+}
 
-    LoadALLData();
+function RestoreDatalists() {
+    if (typeof populateDatalist === 'function') {
+        if (typeof streetNames1030_0 !== 'undefined') populateDatalist('datalist_StreetFR', streetNames1030_0);
+        if (typeof impetrantsNames1030_0 !== 'undefined') populateDatalist('datalist_Impetrants', impetrantsNames1030_0);
+        if (typeof fermetureRue1030_0 !== 'undefined') populateDatalist('datalist_FermetureRue', fermetureRue1030_0);
+    }
 }
 
 function ClearDataSearchTable() {
-    document.getElementById("Chantier1030").value = ""
-    document.getElementById("ChantierOsiris").value = ""
-    document.getElementById("DateDebutChantier").value = ""
-    document.getElementById("DateFinChantier").value = ""
-    document.getElementById("Impetrant").value = ""
-    document.getElementById("NatureChantier").value = ""
-    document.getElementById("RemarqueChantier").value = ""
-    document.getElementById("Rues1030").value = ""
-    document.getElementById("TronconDebut1030").value = ""
-    document.getElementById("TronconFin1030").value = ""
-    document.getElementById("FermetureRue").value = ""
-    document.getElementById("CommentairesOsiris").value = ""
-
-    document.getElementById("DateDebutChantier_0").value = ""
-    document.getElementById("DateFinChantier_0").value = ""
+    const ids = [
+        "Chantier1030", "ChantierOsiris", "DateDebutChantier", "DateFinChantier",
+        "Impetrant", "NatureChantier", "RemarqueChantier", "Rues1030",
+        "TronconDebut1030", "TronconFin1030", "FermetureRue", "CommentairesOsiris",
+        "DateDebutChantier_0", "DateFinChantier_0"
+    ];
+    clearElements(ids);
 
     //LoadALLData();
     window.open("Carte_ProjectsChantiers1030_04.html");
     window.close();
-}
-
-function clearElements(ids) {
-    ids.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.value = "";
-    });
 }
 
 function ClearDataSearch_URBIS() {

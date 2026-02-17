@@ -36,7 +36,6 @@ const carte04 = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
 });
 
 // Google Hybrid > Hybrid : y
-// var carte05 = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
 const carte05 = L.tileLayer('http://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
     attribution: 'données © <a href="//google.com/maps">Google Maps</a>',
     minZoom: 13,

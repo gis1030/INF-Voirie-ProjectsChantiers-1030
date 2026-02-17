@@ -602,6 +602,7 @@ function populateDatalist(listId, dataArray) {
 
     // Asegúrate de que el datalist exista
     if (datalist) {
+        datalist.innerHTML = ""; // Clear existing options
         // Itera sobre el array de datos
         dataArray.forEach(item => {
             // Crea un nuevo elemento <option>

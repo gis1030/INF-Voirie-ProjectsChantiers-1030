@@ -29,6 +29,7 @@ const PolygonStyle_DeepPink = createPolygonStyle({ color: "#000000", opacity: 0.
 
 //Imlpetrantes
 const PolygonStyle_StreetClosed = { fillColor: "#ff0000", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_ValidDateNULL = { fillColor: "#250c71bf", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
 
 const PolygonStyle_BELIRIS = { fillColor: "#DA59DD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
 const PolygonStyle_BM_DEN = { fillColor: "#FFAB91", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
@@ -69,7 +70,7 @@ const DataIcon05 = L.icon({
 
 
 // +++BEGIN++++++ Limites de Schaerbeek ++++++++
-var DBPolygons = L.geoJSON([Boundary], {
+const DBPolygons = L.geoJSON([Boundary], {
     // style: function (feature) {
     //    return feature.properties && feature.properties.style;
     //},
@@ -77,8 +78,8 @@ var DBPolygons = L.geoJSON([Boundary], {
     onEachFeature: onEachFeature,
 }).addTo(carte);
 
-SectorLabel = "Helmet-Hamoir";
-var DBPolygonsBoundary = L.geoJSON([BoundaryDistrict], {
+let SectorLabel = "Helmet-Hamoir";
+const DBPolygonsBoundary = L.geoJSON([BoundaryDistrict], {
     // filter: function (feature) {
     //     if (feature.properties.SectorName.includes(SectorLabel)) return true
     // },
@@ -89,7 +90,7 @@ var DBPolygonsBoundary = L.geoJSON([BoundaryDistrict], {
     onEachFeature: onEachFeature,
 }).addTo(carte);
 
-GroupBondery1030 = new L.featureGroup([
+const GroupBondery1030 = new L.featureGroup([
     DBPolygons,
     DBPolygonsBoundary
 ]);
@@ -101,9 +102,9 @@ carte.addLayer(GroupBondery1030)
 // ++++++++++++++++++++++++++++++++++++++++++
 
 // +++BEGIN++ URBIS_OSIRIS_StreetSurfaces
-SectorLabel_01A = "Polygon"
-SectorLabel_01C = "GeometryCollection"
-var URBIS1030_Polygons_01A = L.geoJSON([URBIS_OSIRIS_StreetSurfaces], {
+let SectorLabel_01A = "Polygon"
+let SectorLabel_01C = "GeometryCollection"
+const URBIS1030_Polygons_01A = L.geoJSON([URBIS_OSIRIS_StreetSurfaces], {
     filter: function (feature) {
         //if (feature.geometry.type.includes(SectorLabel_01A)) return true
         if (feature.geometry.type === SectorLabel_01A) return true
@@ -114,8 +115,8 @@ var URBIS1030_Polygons_01A = L.geoJSON([URBIS_OSIRIS_StreetSurfaces], {
 
 })//.addTo(carte);
 
-SectorLabel_01B = "MultiPolygon"
-var URBIS1030_Polygons_01B = L.geoJSON([URBIS_OSIRIS_StreetSurfaces], {
+let SectorLabel_01B = "MultiPolygon"
+const URBIS1030_Polygons_01B = L.geoJSON([URBIS_OSIRIS_StreetSurfaces], {
     filter: function (feature) {
         //if (feature.geometry.type.includes(SectorLabel_01B)) return true
         if (feature.geometry.type === SectorLabel_01B) return true
@@ -128,7 +129,7 @@ var URBIS1030_Polygons_01B = L.geoJSON([URBIS_OSIRIS_StreetSurfaces], {
 
 // +++BEGIN++ URBIS_OSIRIS_OnlyNodes
 SectorLabel_01A = "Polygon"
-var URBIS1030_Polygons_02A = L.geoJSON([URBIS_OSIRIS_OnlyNodes], {
+const URBIS1030_Polygons_02A = L.geoJSON([URBIS_OSIRIS_OnlyNodes], {
     filter: function (feature) {
         //if (feature.geometry.type.includes(SectorLabel_01A)) return true
         if (feature.geometry.type === SectorLabel_01A) return true
@@ -140,7 +141,7 @@ var URBIS1030_Polygons_02A = L.geoJSON([URBIS_OSIRIS_OnlyNodes], {
 }).addTo(carte);
 
 SectorLabel_01B = "MultiPolygon"
-var URBIS1030_Polygons_02B = L.geoJSON([URBIS_OSIRIS_OnlyNodes], {
+const URBIS1030_Polygons_02B = L.geoJSON([URBIS_OSIRIS_OnlyNodes], {
     filter: function (feature) {
         //if (feature.geometry.type.includes(SectorLabel_01B)) return true
         if (feature.geometry.type === SectorLabel_01B) return true
@@ -152,35 +153,35 @@ var URBIS1030_Polygons_02B = L.geoJSON([URBIS_OSIRIS_OnlyNodes], {
 // +++END++ URBIS_OSIRIS_OnlyNodes
 
 // +++BEGIN++ Group Data StreetSurfaces +++++++++
-var GroupPolygons_URBIS_StreetSurfaces = new L.featureGroup([
+const GroupPolygons_URBIS_StreetSurfaces = new L.featureGroup([
     URBIS1030_Polygons_01A,
 ])//.addTo(carte);
 
-var GroupMultiPolygon_URBIS_StreetSurfaces = new L.featureGroup([
+const GroupMultiPolygon_URBIS_StreetSurfaces = new L.featureGroup([
     URBIS1030_Polygons_01B
 ])//.addTo(carte);
 
-var GroupALL_URBIS_StreetSurfaces = new L.featureGroup([
+const GroupALL_URBIS_StreetSurfaces = new L.featureGroup([
     URBIS1030_Polygons_01A,
     URBIS1030_Polygons_01B,
 ])
 // +++END++ Group Data StreetSurfaces +++++++++
 
 // +++BEGIN++ Group Data NodesSurfaces +++++++++
-var GroupPolygons_URBIS_NodesSurfaces = new L.featureGroup([
+const GroupPolygons_URBIS_NodesSurfaces = new L.featureGroup([
     URBIS1030_Polygons_02A,
 ])//.addTo(carte);
 
-var GroupMultiPolygon_URBIS_NodesSurfaces = new L.featureGroup([
+const GroupMultiPolygon_URBIS_NodesSurfaces = new L.featureGroup([
     URBIS1030_Polygons_02B
 ])//.addTo(carte);
 
-var GroupALL_URBIS_NodesSurfaces = new L.featureGroup([
+const GroupALL_URBIS_NodesSurfaces = new L.featureGroup([
     URBIS1030_Polygons_02A,
     URBIS1030_Polygons_02B,
 ])
 
-var GroupALL_URBIS_NodesStreetSurfaces = new L.featureGroup([
+const GroupALL_URBIS_NodesStreetSurfaces = new L.featureGroup([
     URBIS1030_Polygons_01A,
     URBIS1030_Polygons_01B,
     URBIS1030_Polygons_02A,
@@ -195,224 +196,283 @@ carte.addLayer(GroupALL_URBIS_NodesSurfaces) // NodesSurfaces URBIS
 // ======== Chantiers1030 Data ==============
 // ++++++++++++++++++++++++++++++++++++++++++
 
-if (typeof ChantierLabel === 'undefined' || OsirisLabel === 'undefined' || DateDebutLabel === 'undefined' ||
-    DateFinLabel === 'undefined' || ImpetrantLabel === 'undefined' || NatureLabel === 'undefined' ||
-    RemarqueLabel === 'undefined' || Rues1030Label === 'undefined' || TronconDebutLabel === 'undefined' ||
-    TronconFinLabel === 'undefined' || FermetureLabel === 'undefined') {
+// ++++++++++++++++++++++++++++++++++++++++++
 
-    var ChantierLabel = ""
-    var OsirisLabel = ""
-    var DateDebutLabel = ""
-    var DateFinLabel = ""
-    var ImpetrantLabel = ""
-    var NatureLabel = ""
-    var RemarqueLabel = ""
-    var Rues1030Label = ""
-    var TronconDebutLabel = ""
-    var TronconFinLabel = ""
-    var FermetureLabel = ""
+let ChantierLabel = ""
+let OsirisLabel = ""
+let DateDebutLabel = ""
+let DateFinLabel = ""
+let ImpetrantLabel = ""
+let NatureLabel = ""
+let RemarqueLabel = ""
+let Rues1030Label = ""
+let TronconDebutLabel = ""
+let TronconFinLabel = ""
+let FermetureLabel = ""
 
-    // ++++++ Group Chantier (Polygons) ++++++++
-    var jsonALL_Polygons = {};
-    jsonALL_Polygons = ProjectsChantiers1030
+// ++++++ Group Chantier (Polygons) ++++++++
+let jsonALL_Polygons = {};
+jsonALL_Polygons = ProjectsChantiers1030
 
-    // +++BEGIN++ Impetrants +++++++++
-    // +++BEGIN++ Impetrants +++++++++
+// +++BEGIN++ Impetrants +++++++++
+ImpetrantLabel = "BELIRIS"
+const Impetrant_01 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_BELIRIS, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S01 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_BELIRIS, [ProjectsChantiers1030]);
+const Impetrant_D01 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_BELIRIS, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "BELIRIS"
-    var Impetrant_01 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_BELIRIS, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S01 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_BELIRIS, [ProjectsChantiers1030]);
+ImpetrantLabel = "BM-DEN"
+const Impetrant_02 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_BM_DEN, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S02 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_BM_DEN, [ProjectsChantiers1030]);
+const Impetrant_D02 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_BM_DEN, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "BM-DEN"
-    var Impetrant_02 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_BM_DEN, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S02 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_BM_DEN, [ProjectsChantiers1030]);
+ImpetrantLabel = "BM-DPV"
+const Impetrant_03 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_BM_DPV, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S03 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_BM_DPV, [ProjectsChantiers1030]);
+const Impetrant_D03 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_BM_DPV, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "BM-DPV"
-    var Impetrant_03 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_BM_DPV, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S03 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_BM_DPV, [ProjectsChantiers1030]);
+ImpetrantLabel = "BRUTELE"
+const Impetrant_04 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_BRUTELE, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S04 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_BRUTELE, [ProjectsChantiers1030]);
+const Impetrant_D04 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_BRUTELE, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "BRUTELE"
-    var Impetrant_04 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_BRUTELE, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S04 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_BRUTELE, [ProjectsChantiers1030]);
+ImpetrantLabel = "COLT"
+const Impetrant_05 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_COLT, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S05 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_COLT, [ProjectsChantiers1030]);
+const Impetrant_D05 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_COLT, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "COLT"
-    var Impetrant_05 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_COLT, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S05 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_COLT, [ProjectsChantiers1030]);
+ImpetrantLabel = "DIGI"
+const Impetrant_06 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_DIGI, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S06 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_DIGI, [ProjectsChantiers1030]);
+const Impetrant_D06 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_DIGI, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "DIGI"
-    var Impetrant_06 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_DIGI, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S06 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_DIGI, [ProjectsChantiers1030]);
+ImpetrantLabel = "DITP"
+const Impetrant_07 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_DITP, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S07 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_DITP, [ProjectsChantiers1030]);
+const Impetrant_D07 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_DITP, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "DITP"
-    var Impetrant_07 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_DITP, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S07 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_DITP, [ProjectsChantiers1030]);
+ImpetrantLabel = "ELIA"
+const Impetrant_08 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_ELIA, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S08 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_ELIA, [ProjectsChantiers1030]);
+const Impetrant_D08 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_ELIA, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "ELIA"
-    var Impetrant_08 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_ELIA, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S08 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_ELIA, [ProjectsChantiers1030]);
+ImpetrantLabel = "EUROFIBER"
+const Impetrant_09 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_EUROFIBER, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S09 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_EUROFIBER, [ProjectsChantiers1030]);
+const Impetrant_D09 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_EUROFIBER, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "EUROFIBER"
-    var Impetrant_09 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_EUROFIBER, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S09 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_EUROFIBER, [ProjectsChantiers1030]);
+ImpetrantLabel = "INFRABEL"
+const Impetrant_10 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_INFRABEL, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S10 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_INFRABEL, [ProjectsChantiers1030]);
+const Impetrant_D10 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_INFRABEL, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "INFRABEL"
-    var Impetrant_10 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_INFRABEL, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S10 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_INFRABEL, [ProjectsChantiers1030]);
+ImpetrantLabel = "IRISNET"
+const Impetrant_11 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_IRISNET, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S11 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_IRISNET, [ProjectsChantiers1030]);
+const Impetrant_D11 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_IRISNET, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "IRISNET"
-    var Impetrant_11 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_IRISNET, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S11 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_IRISNET, [ProjectsChantiers1030]);
+ImpetrantLabel = "PROXIMUS"
+const Impetrant_12 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_PROXIMUS, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S12 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_PROXIMUS, [ProjectsChantiers1030]);
+const Impetrant_D12 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_PROXIMUS, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "PROXIMUS"
-    var Impetrant_12 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_PROXIMUS, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S12 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_PROXIMUS, [ProjectsChantiers1030]);
+ImpetrantLabel = "SCHAERBEEK AMÉNAGEMENT COMPLET"
+const Impetrant_13 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SCHAERBEEK_AME_COMPLET, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S13 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SCHAERBEEK_AME_COMPLET, [ProjectsChantiers1030]);
+const Impetrant_D13 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_SCHAERBEEK_AME_COMPLET, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "SCHAERBEEK AMÉNAGEMENT COMPLET"
-    var Impetrant_13 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SCHAERBEEK_AME_COMPLET, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S13 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SCHAERBEEK_AME_COMPLET, [ProjectsChantiers1030]);
+ImpetrantLabel = "SCHAERBEEK ASPHALTE"
+const Impetrant_14 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SCHAERBEEK_ASPHALTE, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S14 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SCHAERBEEK_ASPHALTE, [ProjectsChantiers1030]);
+const Impetrant_D14 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_SCHAERBEEK_ASPHALTE, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "SCHAERBEEK ASPHALTE"
-    var Impetrant_14 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SCHAERBEEK_ASPHALTE, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S14 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SCHAERBEEK_ASPHALTE, [ProjectsChantiers1030]);
+ImpetrantLabel = "SCHAERBEEK DAV"
+const Impetrant_15 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SCHAERBEEK_DAV, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S15 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SCHAERBEEK_DAV, [ProjectsChantiers1030]);
+const Impetrant_D15 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_SCHAERBEEK_DAV, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "SCHAERBEEK DAV"
-    var Impetrant_15 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SCHAERBEEK_DAV, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S15 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SCHAERBEEK_DAV, [ProjectsChantiers1030]);
+ImpetrantLabel = "SCHAERBEEK MARQUAGE"
+const Impetrant_16 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SCHAERBEEK_MARQUAGE, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S16 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SCHAERBEEK_MARQUAGE, [ProjectsChantiers1030]);
+const Impetrant_D16 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_SCHAERBEEK_MARQUAGE, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "SCHAERBEEK MARQUAGE"
-    var Impetrant_16 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SCHAERBEEK_MARQUAGE, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S16 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SCHAERBEEK_MARQUAGE, [ProjectsChantiers1030]);
+ImpetrantLabel = "SCHAERBEEK RENOVAS"
+const Impetrant_17 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SCHAERBEEK_RENOVAS, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S17 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SCHAERBEEK_RENOVAS, [ProjectsChantiers1030]);
+const Impetrant_D17 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_SCHAERBEEK_RENOVAS, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "SCHAERBEEK RENOVAS"
-    var Impetrant_17 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SCHAERBEEK_RENOVAS, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S17 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SCHAERBEEK_RENOVAS, [ProjectsChantiers1030]);
+ImpetrantLabel = "SCHAERBEEK TROTTOIRS"
+const Impetrant_18 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SCHAERBEEK_TROTTOIRS, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S18 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SCHAERBEEK_TROTTOIRS, [ProjectsChantiers1030]);
+const Impetrant_D18 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_SCHAERBEEK_TROTTOIRS, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "SCHAERBEEK TROTTOIRS"
-    var Impetrant_18 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SCHAERBEEK_TROTTOIRS, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S18 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SCHAERBEEK_TROTTOIRS, [ProjectsChantiers1030]);
+ImpetrantLabel = "SIBELGA"
+const Impetrant_19 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SIBELGA, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S19 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SIBELGA, [ProjectsChantiers1030]);
+const Impetrant_D19 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_SIBELGA, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "SIBELGA"
-    var Impetrant_19 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SIBELGA, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S19 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SIBELGA, [ProjectsChantiers1030]);
+ImpetrantLabel = "SIBELGA EP"
+const Impetrant_20 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SIBELGA_EP, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S20 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SIBELGA_EP, [ProjectsChantiers1030]);
+const Impetrant_D20 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_SIBELGA_EP, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "SIBELGA EP"
-    var Impetrant_20 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SIBELGA_EP, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S20 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SIBELGA_EP, [ProjectsChantiers1030]);
+ImpetrantLabel = "STIB"
+const Impetrant_21 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_STIB, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S21 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_STIB, [ProjectsChantiers1030]);
+const Impetrant_D21 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_STIB, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "STIB"
-    var Impetrant_21 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_STIB, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S21 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_STIB, [ProjectsChantiers1030]);
+ImpetrantLabel = "VIVAQUA ASSAINISSEMENT";
+const Impetrant_22 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_VIVAQUA_ASS, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S22 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_VIVAQUA_ASS, [ProjectsChantiers1030]);
+const Impetrant_D22 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_VIVAQUA_ASS, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "VIVAQUA ASSAINISSEMENT";
-    var Impetrant_22 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_VIVAQUA_ASS, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S22 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_VIVAQUA_ASS, [ProjectsChantiers1030]);
+ImpetrantLabel = "VIVAQUA DISTRIBUTION"
+const Impetrant_23 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_VIVAQUA_DIS, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S23 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_VIVAQUA_DIS, [ProjectsChantiers1030]);
+const Impetrant_D23 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_VIVAQUA_DIS, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "VIVAQUA DISTRIBUTION"
-    var Impetrant_23 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_VIVAQUA_DIS, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S23 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_VIVAQUA_DIS, [ProjectsChantiers1030]);
+ImpetrantLabel = "VIVAQUA RÉPARTITION"
+const Impetrant_24 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_VIVAQUA_REP, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S24 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_VIVAQUA_REP, [ProjectsChantiers1030]);
+const Impetrant_D24 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_VIVAQUA_REP, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "VIVAQUA RÉPARTITION"
-    var Impetrant_24 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_VIVAQUA_REP, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S24 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_VIVAQUA_REP, [ProjectsChantiers1030]);
+ImpetrantLabel = "VOO"
+const Impetrant_25 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_VOO, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S25 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_VOO, [ProjectsChantiers1030]);
+const Impetrant_D25 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_VOO, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "VOO"
-    var Impetrant_25 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_VOO, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S25 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_VOO, [ProjectsChantiers1030]);
+ImpetrantLabel = "WYRE"
+const Impetrant_26 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_WYRE, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S26 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_WYRE, [ProjectsChantiers1030]);
+const Impetrant_D26 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_WYRE, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
-    ImpetrantLabel = "WYRE"
-    var Impetrant_26 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_WYRE, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    var Impetrant_S26 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_WYRE, [ProjectsChantiers1030]);
+const PolygonStyle_Coral_02 = { fillColor: "#e8a076", fillOpacity: 0.2, color: "#000000", opacity: 0.3, weight: 1 };
+const Chantier1030_Street = crearCapaImpetrant_ClosedStreet(PolygonStyle_Coral_02, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+// +++END++ Impetrants +++++++++
 
-    const PolygonStyle_Coral_02 = { fillColor: "#e8a076", fillOpacity: 0.2, color: "#000000", opacity: 0.3, weight: 1 };
-    var Chantier1030_Street = crearCapaImpetrant_ClosedStreet(PolygonStyle_Coral_02, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
-    // +++END++ Impetrants +++++++++
+// Full Layers Impetrants
+const GroupChantiersMap1030 = new L.featureGroup([
+    Impetrant_01,
+    Impetrant_02,
+    Impetrant_03,
+    Impetrant_04,
+    Impetrant_05,
+    Impetrant_06,
+    Impetrant_07,
+    Impetrant_08,
+    Impetrant_09,
+    Impetrant_10,
+    Impetrant_11,
+    Impetrant_12,
+    Impetrant_13,
+    Impetrant_14,
+    Impetrant_15,
+    Impetrant_16,
+    Impetrant_17,
+    Impetrant_18,
+    Impetrant_19,
+    Impetrant_20,
+    Impetrant_21,
+    Impetrant_22,
+    Impetrant_23,
+    Impetrant_24,
+    Impetrant_25,
+    Impetrant_26,
+    //Chantier1030_Street
+]);
+const GroupChantiersMap1030_00 = GroupChantiersMap1030
 
-    // Full Layers Impetrants
-    var GroupChantiersMap1030 = new L.featureGroup([
-        Impetrant_01,
-        Impetrant_02,
-        Impetrant_03,
-        Impetrant_04,
-        Impetrant_05,
-        Impetrant_06,
-        Impetrant_07,
-        Impetrant_08,
-        Impetrant_09,
-        Impetrant_10,
-        Impetrant_11,
-        Impetrant_12,
-        Impetrant_13,
-        Impetrant_14,
-        Impetrant_15,
-        Impetrant_16,
-        Impetrant_17,
-        Impetrant_18,
-        Impetrant_19,
-        Impetrant_20,
-        Impetrant_21,
-        Impetrant_22,
-        Impetrant_23,
-        Impetrant_24,
-        Impetrant_25,
-        Impetrant_26,
-        //Chantier1030_Street
-    ]);
-    var GroupChantiersMap1030_00 = GroupChantiersMap1030
+// Simple Layers Impetrants
+const GroupChantiersMap1030_S = new L.featureGroup([
+    Impetrant_S01,
+    Impetrant_S02,
+    Impetrant_S03,
+    Impetrant_S04,
+    Impetrant_S05,
+    Impetrant_S06,
+    Impetrant_S07,
+    Impetrant_S08,
+    Impetrant_S09,
+    Impetrant_S10,
+    Impetrant_S11,
+    Impetrant_S12,
+    Impetrant_S13,
+    Impetrant_S14,
+    Impetrant_S15,
+    Impetrant_S16,
+    Impetrant_S17,
+    Impetrant_S18,
+    Impetrant_S19,
+    Impetrant_S20,
+    Impetrant_S21,
+    Impetrant_S22,
+    Impetrant_S23,
+    Impetrant_S24,
+    Impetrant_S25,
+    Impetrant_S26,
+]);
 
-    // Simple Layers Impetrants
-    var GroupChantiersMap1030_S = new L.featureGroup([
-        Impetrant_S01,
-        Impetrant_S02,
-        Impetrant_S03,
-        Impetrant_S04,
-        Impetrant_S05,
-        Impetrant_S06,
-        Impetrant_S07,
-        Impetrant_S08,
-        Impetrant_S09,
-        Impetrant_S10,
-        Impetrant_S11,
-        Impetrant_S12,
-        Impetrant_S13,
-        Impetrant_S14,
-        Impetrant_S15,
-        Impetrant_S16,
-        Impetrant_S17,
-        Impetrant_S18,
-        Impetrant_S19,
-        Impetrant_S20,
-        Impetrant_S21,
-        Impetrant_S22,
-        Impetrant_S23,
-        Impetrant_S24,
-        Impetrant_S25,
-        Impetrant_S26,
-    ]);
+// Valid Data
+const GroupChantiersMap1030_D = new L.featureGroup([
+    Impetrant_D01,
+    Impetrant_D02,
+    Impetrant_D03,
+    Impetrant_D04,
+    Impetrant_D05,
+    Impetrant_D06,
+    Impetrant_D07,
+    Impetrant_D08,
+    Impetrant_D09,
+    Impetrant_D10,
+    Impetrant_D11,
+    Impetrant_D12,
+    Impetrant_D13,
+    Impetrant_D14,
+    Impetrant_D15,
+    Impetrant_D16,
+    Impetrant_D17,
+    Impetrant_D18,
+    Impetrant_D19,
+    Impetrant_D20,
+    Impetrant_D21,
+    Impetrant_D22,
+    Impetrant_D23,
+    Impetrant_D24,
+    Impetrant_D25,
+    Impetrant_D26,
+]);
 
-    var GroupALL_Chantiers = new L.featureGroup([
-        //Chantier1030_Street,
-        //GroupChantiersMap1030_S
-        GroupChantiersMap1030
-    ])
+let GroupALL_Chantiers = new L.featureGroup([
+    //Chantier1030_Street,
+    //GroupChantiersMap1030_S
+    GroupChantiersMap1030
+])
 
-    // Group CLusteres
-    GroupPolygonsMap1030_ALL.addLayer(GroupChantiersMap1030)
-    //GroupPolygonsMap1030_ALL.addLayer(Chantier1030_Street)
-    //GroupPolygonsMap1030_ALL.addLayer(GroupChantiersMap1030_S)
-    GroupALL_Chantiers_00 = GroupALL_Chantiers
-}
+// Group CLusteres
+GroupPolygonsMap1030_ALL.addLayer(GroupChantiersMap1030)
+//GroupPolygonsMap1030_ALL.addLayer(Chantier1030_Street)
+//GroupPolygonsMap1030_ALL.addLayer(GroupChantiersMap1030_S)
+let GroupALL_Chantiers_00 = GroupALL_Chantiers
 
-var GroupALL_Chantiers_S = new L.featureGroup([
+const GroupALL_Chantiers_S = new L.featureGroup([
     GroupChantiersMap1030_S,
 ]);
 
-var GroupPolygonsClustersALL1030 = new L.featureGroup([
+const GroupALL_Chantiers_D = new L.featureGroup([
+    GroupChantiersMap1030_D,
+])
+
+const GroupPolygonsClustersALL1030 = new L.featureGroup([
     GroupPolygonsMap1030_ALL,
 ]);
 
-var GroupChantiersALL1030 = new L.featureGroup([
+const GroupChantiersALL1030 = new L.featureGroup([
     GroupPolygonsMap1030_ALL,
 ]);
+// +++BEGIN++ Validate Date +++++++
+
+
+// +++END++ Validate Date +++++++++
+
 
 carte.addLayer(GroupChantiersALL1030)
 //carte.addLayer(GroupALL_Chantiers_S)
@@ -420,7 +480,7 @@ carte.addLayer(GroupChantiersALL1030)
 // END ==== Donnnes GeoJson comme marqueurs ========
 
 // BEGIN ======== Data Viewer ======== BEGIN \\ 
-Chantier1030 = GroupALL_Chantiers
+let Chantier1030 = GroupALL_Chantiers
 
 Chantier1030.on("click", function (event) {
     var clickedMarker = event.layer;
@@ -440,6 +500,13 @@ GroupALL_Chantiers_S.on("click", function (event) {
     MarkerDataView(clickedMarker)
 });
 
+GroupALL_Chantiers_D.on("click", function (event) {
+    var clickedMarker = event.layer;
+    // console.log(clickedMarker)
+    MarkerDataView(clickedMarker)
+});
+
+
 GroupALL_Chantiers.on("click", function (event) {
     var clickedMarker = event.layer;
     // console.log(clickedMarker)
@@ -448,7 +515,7 @@ GroupALL_Chantiers.on("click", function (event) {
 // END ======== Data Viewer ======== END \\
 
 
-var { jsonALL_Points_ALL, jsonALL_Polygons_ALL } = createSeparateGeoJsonCollections(ProjectsChantiers1030);
+const { jsonALL_Points_ALL, jsonALL_Polygons_ALL } = createSeparateGeoJsonCollections(ProjectsChantiers1030);
 
 // BEGIN ======== Javascript FUnctions  ======== BEGIN \\
 // fonction qui est appelée sur chaque entité avant de l'ajouter à une couche GeoJSON. 
@@ -560,13 +627,13 @@ function LoadALLData() {
 }
 
 function filterBy(val) {
-    var result = Object.keys(obj).reduce(function (r, e) {
+    const result = Object.keys(obj).reduce(function (r, e) {
         if (e.toLowerCase().indexOf(val) != -1) {
             r[e] = obj[e];
         } else {
             Object.keys(obj[e]).forEach(function (k) {
                 if (k.toLowerCase().indexOf(val) != -1) {
-                    var object = {}
+                    const object = {}
                     object[k] = obj[e][k];
                     r[e] = object;
                 }
@@ -585,35 +652,35 @@ function concatGeoJSON(g1, g2) {
 };
 
 function removeDuplicates(originalArray, prop) {
-    var newArray = [];
-    var lookupObject = {};
+    const newArray = [];
+    const lookupObject = {};
 
-    for (var i in originalArray) {
+    for (let i in originalArray) {
         lookupObject[originalArray[i][prop]] = originalArray[i];
     }
 
-    for (i in lookupObject) {
+    for (let i in lookupObject) {
         newArray.push(lookupObject[i]);
     }
     return newArray;
 }
 
 function SearchData() {
-    var ChantierLabel = document.getElementById("Chantier1030").value;
-    var OsirisLabel = document.getElementById("ChantierOsiris").value;
-    var DateDebutLabel = document.getElementById("DateDebutChantier").value;
-    var DateFinLabel = document.getElementById("DateFinChantier").value;
-    var ImpetrantLabel = document.getElementById("Impetrant").value;
-    var NatureLabel = document.getElementById("NatureChantier").value;
-    var RemarqueLabel = document.getElementById("RemarqueChantier").value;
-    var Rues1030Label = document.getElementById("Rues1030").value;
-    var TronconDebutLabel = document.getElementById("TronconDebut1030").value;
-    var TronconFinLabel = document.getElementById("TronconFin1030").value;
-    var FermetureLabel = document.getElementById("FermetureRue").value;
+    let ChantierLabel = document.getElementById("Chantier1030").value;
+    let OsirisLabel = document.getElementById("ChantierOsiris").value;
+    let DateDebutLabel = document.getElementById("DateDebutChantier").value;
+    let DateFinLabel = document.getElementById("DateFinChantier").value;
+    let ImpetrantLabel = document.getElementById("Impetrant").value;
+    let NatureLabel = document.getElementById("NatureChantier").value;
+    let RemarqueLabel = document.getElementById("RemarqueChantier").value;
+    let Rues1030Label = document.getElementById("Rues1030").value;
+    let TronconDebutLabel = document.getElementById("TronconDebut1030").value;
+    let TronconFinLabel = document.getElementById("TronconFin1030").value;
+    let FermetureLabel = document.getElementById("FermetureRue").value;
 
-    var DateDebutLabel_0 = new Date((document.getElementById("DateDebutChantier_0").value));
-    var DateFinLabel_0 = new Date((document.getElementById("DateDebutChantier_0").value));
-    //var DateFinLabel_0 = new Date((document.getElementById("DateFinChantier_0").value));
+    let DateDebutLabel_0 = new Date((document.getElementById("DateDebutChantier_0").value));
+    let DateFinLabel_0 = new Date((document.getElementById("DateDebutChantier_0").value));
+    //let DateFinLabel_0 = new Date((document.getElementById("DateFinChantier_0").value));
 
     // Verificar si las fechas son inválidas
     function validarYReportarFechas_DosFechas(fechaStr1, fechaStr2) {
@@ -723,31 +790,32 @@ function SearchData() {
     }
 
     // items >> compteurs
-    var k_ChantierLabel = 0;
-    var k_OsirisLabel = 0;
-    var k_DateDebutLabel = 0;
-    var k_DateFinLabel = 0;
-    var k_ImpetrantLabel = 0;
-    var k_NatureLabel = 0;
-    var k_RemarqueLabel = 0;
-    var k_Rues1030Label = 0;
-    var k_TronconDebutLabel = 0;
-    var k_TronconFinLabel = 0;
-    var k_FermetureLabel = 0;
+    let k_ChantierLabel = 0;
+    let k_OsirisLabel = 0;
+    let k_DateDebutLabel = 0;
+    let k_DateFinLabel = 0;
+    let k_ImpetrantLabel = 0;
+    let k_NatureLabel = 0;
+    let k_RemarqueLabel = 0;
+    let k_Rues1030Label = 0;
+    let k_TronconDebutLabel = 0;
+    let k_TronconFinLabel = 0;
+    let k_FermetureLabel = 0;
 
     // Date >> compteurs
-    var k_DateDebutLabel_0 = 0;
-    var k_DateFinLabel_0 = 0;
+    let k_DateDebutLabel_0 = 0;
+    let k_DateFinLabel_0 = 0;
 
     // On reinitialise les layers >> Points
     GroupMarkersMap1030_ALL.clearLayers();
-    var jsonALL_00 = 0;
-    var jsonSEARCH = {};
+    let jsonALL_00 = 0;
+    let jsonSEARCH = {};
+    let mylist = []; // Declaration of mylist
 
     // On reinitialise les layers >> Polygons
     GroupPolygonsMap1030_ALL.clearLayers();
-    var jsonALL_Polygons_00 = 0;
-    var jsonSEARCH_Polygons = {};
+    let jsonALL_Polygons_00 = 0;
+    let jsonSEARCH_Polygons = {};
 
     // >>> recherche par date de chantier
     if (ChantierLabel === "ALLData") {
@@ -985,13 +1053,26 @@ function SearchData() {
     k_TotalChantiers = jsonSEARCH.features.length + jsonSEARCH_Polygons.features.length;
     console.log("Total Chantiers a Represente: " + k_TotalChantiers)
 
+    // Update Datalists based on filtered results
+    if (typeof populateDatalist === 'function' && typeof ListaPropiedad === 'function') {
+        const filteredData = [jsonSEARCH, jsonSEARCH_Polygons];
+        const streetNames1030_Filtered = ListaPropiedad("VoirieNom", filteredData);
+        populateDatalist('datalist_StreetFR', streetNames1030_Filtered);
+
+        const impetrantsNames1030_Filtered = ListaPropiedad("NomImpetrant", filteredData);
+        populateDatalist('datalist_Impetrants', impetrantsNames1030_Filtered);
+
+        const fermetureRue1030_Filtered = ListaPropiedad("FermetureRue", filteredData);
+        populateDatalist('datalist_FermetureRue', fermetureRue1030_Filtered);
+    }
+
     if (k_TotalChantiers === 0) {
         alert("Il n'y a pas des chantiers répertoriée avec les valeurs de recherche sélectionnées.., modifiez les critères de recherche");
         ClearDataSearch();
     };
 
     if (jsonSEARCH_Polygons.features.length !== 0) {
-        var GroupALL_Chantiers = L.geoJSON([jsonSEARCH_Polygons], {
+        const GroupALL_Chantiers = L.geoJSON([jsonSEARCH_Polygons], {
             filter: function (feature) {
                 var nom = feature.properties.NomImpetrant;
                 return [
@@ -1030,7 +1111,7 @@ function SearchData() {
                 if (feature.properties.FermetureRue && feature.properties.FermetureRue.trim().toLowerCase() === "oui") {
                     return PolygonStyle_StreetClosed;
                 }
-                var nom = feature.properties.NomImpetrant;
+                const nom = feature.properties.NomImpetrant;
                 switch (nom) {
                     case "BELIRIS": return PolygonStyle_BELIRIS;
                     case "BM-DEN": return PolygonStyle_BM_DEN;
@@ -1258,6 +1339,55 @@ function crearCapaImpetrant(label, StyleImpetrant, StyleStreetClosed, geoData) {
     // 2. Contamos cuántos elementos pasaron el filtro
     const numeroElementos = capa.getLayers().length;
     //console.log("Se han cargado " + numeroElementos + " elementos para " + label);
+    return capa;
+}
+
+// Data color a los chantiers que no tienen fecha de inicio
+function crearCapaImpetrantValidDate(label, StyleImpetrant, StyleStreetClosed, geoData) {
+    // 1. Creamos la capa GeoJSON con los filtros y estilos
+    const capa = L.geoJSON(geoData, {
+        filter: function (feature) {
+            return feature.properties.NomImpetrant === label;
+        },
+        style: function (feature) {
+            // Extraemos la fecha y eliminamos espacios en blanco
+            const fecha = feature.properties?.DateDebut;
+
+            // Si no existe, es null o al quitar espacios queda vacía, aplicamos StyleStreetClosed
+            const estaVacia = !fecha || (typeof fecha === 'string' && fecha.trim() === "");
+
+            return estaVacia ? StyleStreetClosed : StyleImpetrant;
+        },
+        onEachFeature: onEachFeature
+    });
+
+    // 2. Contamos cuántos elementos pasaron el filtro
+    const numeroElementos = capa.getLayers().length;
+    return capa;
+}
+
+// Solo escoge los chantiers con fechas nulas.
+function crearCapaImpetrantValidDate_NULL(label, StyleImpetrant, StyleStreetClosed, geoData) {
+    const capa = L.geoJSON(geoData, {
+        filter: function (feature) {
+            // 1. Verificamos que sea el Impetrant correcto
+            const mismoImpetrant = feature.properties.NomImpetrant === label;
+
+            // 2. Verificamos si la fecha está vacía (null, undefined o texto vacío)
+            const fecha = feature.properties?.DateDebut;
+            const estaVacia = !fecha || (typeof fecha === 'string' && fecha.trim() === "");
+
+            // Solo incluimos el elemento si coincide el nombre Y la fecha está vacía
+            return mismoImpetrant && estaVacia;
+        },
+        style: function (feature) {
+            // Como ahora todos los elementos de esta capa tienen fecha vacía, 
+            // usamos directamente el estilo de calle cerrada.
+            return StyleStreetClosed;
+        },
+        onEachFeature: onEachFeature
+    });
+
     return capa;
 }
 
