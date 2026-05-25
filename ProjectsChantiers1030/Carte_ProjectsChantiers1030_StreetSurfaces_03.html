@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ïe=edge">
     <meta charset="utf-8" />
 
-    <!-- CSS Libraries -->
+    <div id="CSS_Libraries">
         <!-- Librerie Leaflet  https://unpkg.com/leaflet@1.7.1/dist/leaflet.css -->
         <!-- <link rel="stylesheet" href="css/leaflet.css" /> -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -47,7 +47,7 @@
         <link rel="stylesheet" href="css/style_html_c1030.css">
         <!-- <link rel="stylesheet" href="css/style_html.css"> -->
         <link rel="stylesheet" href="css/style_clusters.css">
-
+    </div>
 
     <style>
 
@@ -56,7 +56,6 @@
 
 <body id="ALL_HTML">
 
-
     <div id="Internal_Body"> <!-- Previously body id="Internal_Body" -->
         <div id="HTML_Heading">
             <header class="page-header">
@@ -64,7 +63,6 @@
                     Coordination des Chantiers à Schaerbeek
                 </h1>
             </header>
-            <br>
         </div>
 
 
@@ -85,7 +83,7 @@
             <div id="myTable"></div>
         </div>
 
-        <div id="Region01">
+        <div id="Region01" style="align-items: flex-start; align-content: flex-start; justify-content: flex-start; overflow-y: auto; overflow-x: hidden;">
             <div class="container">
                 <div class="row">
                     <div class="container">
@@ -93,7 +91,6 @@
                             <label style="font-size:1.2em; font-weight: bold; text-align: center; font-style:italic;
                             background-color:white;
                             color:black">Données sur les chantiers à Schaerbeek</label>
-                            <p></p>
                         </div>
                     </div>
 
@@ -117,18 +114,18 @@
 
                     <div class="container">
                         <div class="row justify-content-center">
-                            <div class="col-4 mb-2">
+                            <div class="col-4 mb-1">
                                 <label for="DateDebutChantier" class="form-label"
                                     style="font-size: calc(0.5rem + 0.3vw)">Debut Chantier</label>
-                                <input type="text" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
-                                    id="DateDebutChantier" placeholder="aaaa/mm/dd" style="font-size:13px" disabled>
+                                <input type="date" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
+                                    id="DateDebutChantier">
                             </div>
 
-                            <div class="col-4 mb-2">
+                            <div class="col-4 mb-1">
                                 <label for="DateFinChantier" class="form-label"
                                     style="font-size: calc(0.5rem + 0.3vw)">Fin Chantier</label>
-                                <input type="text" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
-                                    id="DateFinChantier" placeholder="aaaa/mm/dd" style="font-size:13px" disabled>
+                                <input type="date" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
+                                    id="DateFinChantier">
                             </div>
 
                         </div>
@@ -148,7 +145,7 @@
                                 </datalist>
                             </div>
 
-                            <div class="col-8 mb-2">
+                            <div class="col-8 mb-1">
                                 <label for="NatureChantier" class="form-label"
                                     style="font-size: calc(0.5rem + 0.3vw)">Nature de travaux</label>
                                 <input type="text" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
@@ -156,7 +153,7 @@
                                     disabled>
                             </div>
 
-                            <div class="col-4 mb-2">
+                            <div class="col-4 mb-1">
                                 <label for="FermetureRue" class="form-label"
                                     style="font-size: calc(0.5rem + 0.3vw)">Fermeture de Rue</label>
                                 <input type="text" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
@@ -167,11 +164,11 @@
                                 </datalist>
                             </div>
 
-                            <div class="col-12 mb-2">
+                            <div class="col-12 mb-1">
                                 <label for="RemarqueChantier" class="form-label"
                                     style="font-size: calc(0.5rem + 0.3vw)">Remarque du chantier</label>
                                 <input type="text" class="form-control"
-                                    style="font-size: calc(0.4rem + 0.3vw); height: 50px;" id="RemarqueChantier"
+                                    style="font-size: calc(0.4rem + 0.3vw); height: 32px;" id="RemarqueChantier"
                                     placeholder="remarque..." style="font-size:13px" disabled>
                             </div>
                         </div>
@@ -188,14 +185,14 @@
                         </datalist>
 
                         <div class="row justify-content-center">
-                            <div class="col-6 mb-2">
+                            <div class="col-6 mb-1">
                                 <label for="TronconDebut1030" class="form-label"
                                     style="font-size: calc(0.5rem + 0.3vw)">Debut tronçon</label>
                                 <input type="text" class="form-control" style="font-size: calc(0.4rem + 0.3vw)"
                                     id="TronconDebut1030" placeholder="debut..." style="font-size:13px" disabled>
                             </div>
 
-                            <div class="col-6 mb-2">
+                            <div class="col-6 mb-1">
                                 <label for="TronconFin1030" class="form-label"
                                     style="font-size: calc(0.5rem + 0.3vw)">Fin
                                     tronçon</label>
@@ -235,26 +232,19 @@
                 <div class="row justify-content-center align-items-center">
 
                     <div class="col-4">
-                        <button id="btnSaveData" type="button" class="btn btn-success btn-sm"
-                            style="background-color: #35ceb9; border-color: #35ceb9" onclick="SearchData()">Filter
-                            Chantier</button>
+                        <button id="btnSaveData" type="button" class="btn btn-success btn-sm w-100"
+                            style="background-color: #35ceb9; border-color: #35ceb9; white-space: nowrap; font-size: calc(0.35rem + 0.45vw);"
+                            onclick="SearchData()">Filter Chantier</button>
                     </div>
-                    <div class="col-2">
-                        <button id="btnClear" type="button" class="btn btn-primary btn-sm"
-                            style="background-color: #6b8ee0; border-color: #6b8ee0;" role="button"
-                            onclick="ClearDataSearch()">Clear</button>
+                    <div class="col-3">
+                        <button id="btnClear" type="button" class="btn btn-primary btn-sm w-100"
+                            style="background-color: #6b8ee0; border-color: #6b8ee0; white-space: nowrap; font-size: calc(0.35rem + 0.45vw);"
+                            role="button" onclick="ClearDataSearch()">Clear</button>
                     </div>
-                    <!--
-                            <div class="col-2 ">
-                                <button id="btnClear" type="button" class="btn btn-primary btn-sm"
-                                    style="background-color: #f57aad; border-color: #f57aad"
-                                    onclick="ViewTable()">Table</button>
-                            </div>
-                            -->
                     <div class="col-5">
-                        <button id="btnClear" type="button" class="btn btn-primary btn-sm"
-                            style="background-color: #d453a7; border-color: #d453a7" onclick="Return()">Projects
-                            Chantier</button>
+                        <button id="btnProjects" type="button" class="btn btn-primary btn-sm w-100"
+                            style="background-color: #d453a7; border-color: #d453a7; white-space: nowrap; font-size: calc(0.35rem + 0.45vw);"
+                            onclick="Return()">Projects Chantier</button>
                     </div>
                 </div>
             </div>
@@ -279,8 +269,6 @@
             </footer>
         </div>
     </div>
-
-
 
     <div id="JavaScript_Libraries">
         <div id="GeoJSON_Data">
@@ -410,6 +398,33 @@
                     window.close();
                 }
                 */
+
+                // Opción 5: Exclusión mutua Zone 1 (Debut/Fin) ↔ Zone 2 (Date Chantier)
+                document.addEventListener('DOMContentLoaded', function () {
+                    var zone1Ids = ['DateDebutChantier', 'DateFinChantier'];
+                    var zone2Id  = 'DateDebutChantier_0';
+
+                    function onZone1Input() {
+                        var hasValue = zone1Ids.some(function(id) { return document.getElementById(id).value !== ''; });
+                        var z2 = document.getElementById(zone2Id);
+                        if (z2) { z2.value = ''; z2.disabled = hasValue; }
+                    }
+
+                    function onZone2Input() {
+                        var hasValue = document.getElementById(zone2Id).value !== '';
+                        zone1Ids.forEach(function(id) {
+                            var el = document.getElementById(id);
+                            if (el) { el.value = ''; el.disabled = hasValue; }
+                        });
+                    }
+
+                    zone1Ids.forEach(function(id) {
+                        var el = document.getElementById(id);
+                        if (el) el.addEventListener('input', onZone1Input);
+                    });
+                    var z2el = document.getElementById(zone2Id);
+                    if (z2el) z2el.addEventListener('input', onZone2Input);
+                });
             </script>
 
         </div>
