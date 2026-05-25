@@ -77,7 +77,23 @@ function ClearDataSearch() {
     ];
     clearElements(ids);
 
-    if (typeof LoadALLData !== 'undefined') LoadALLData();
+    // Opción 5: reactivar ambas zonas de fecha al hacer Clear
+    ['DateDebutChantier', 'DateFinChantier', 'DateDebutChantier_0'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.disabled = false;
+    });
+
+    // Reset map: clear filtered layers and restore full chantier dataset
+    try {
+        if (typeof GroupPolygonsMap1030_ALL !== 'undefined' && typeof GroupChantiersMap1030 !== 'undefined') {
+            GroupPolygonsMap1030_ALL.clearLayers();
+            GroupPolygonsMap1030_ALL.addLayer(GroupChantiersMap1030);
+        } else if (typeof LoadALLData === 'function') {
+            LoadALLData();
+        }
+    } catch (e) {
+        console.error('ClearDataSearch map reset error:', e);
+    }
     RestoreDatalists();
 }
 

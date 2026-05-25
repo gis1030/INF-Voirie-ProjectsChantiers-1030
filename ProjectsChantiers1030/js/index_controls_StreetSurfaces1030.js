@@ -116,8 +116,8 @@ const GroupDataALL_Chantiers1030 = {
 
 const LControl04 = L.control.layers(CarteGroup, GroupDataGeometry_URBIS).addTo(carte);
 const LControl03 = L.control.layers(BonderySchaerbeek1030, Group_Bondery1030).addTo(carte);
-const LControl06 = L.control.layers(GroupDataALL_Impetrants1030).addTo(carte);
-const LControl07 = L.control.layers(GroupDataALL_Impetrants1030_ValidDate).addTo(carte);
+const LControl06 = L.control.layers({}, GroupDataALL_Impetrants1030).addTo(carte);
+const LControl07 = L.control.layers({}, GroupDataALL_Impetrants1030_ValidDate).addTo(carte);
 // ++++++++ Choix de cartes et Elements ++++++++
 
 // +++++++ Revient a la position initial ++++++++

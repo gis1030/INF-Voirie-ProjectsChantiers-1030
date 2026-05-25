@@ -860,6 +860,52 @@ function SearchData() {
         };
     };
 
+    // Debut/Fin date range filter (Zone 1)
+    if (ChantierLabel === "ALLData") {
+        if (DateDebutLabel !== "ALLData" || DateFinLabel !== "ALLData") {
+
+            const rangeStart = DateDebutLabel !== "ALLData" ? new Date(DateDebutLabel) : new Date(2000, 0, 1);
+            const rangeEnd   = DateFinLabel   !== "ALLData" ? new Date(DateFinLabel)   : new Date(2099, 11, 31);
+
+            if (jsonALL_00 === 0 && jsonALL_Polygons_00 === 0) {
+                jsonALL_00 = jsonALL_Points_ALL;
+                jsonSEARCH = {};
+                jsonALL_Polygons_00 = jsonALL_Polygons_ALL;
+                jsonSEARCH_Polygons = {};
+            } else if (jsonALL_00 !== 0 && jsonALL_Polygons_00 === 0) {
+                jsonALL_00 = jsonSEARCH;
+                jsonSEARCH = {};
+                jsonALL_Polygons_00 = jsonALL_Polygons_ALL;
+                jsonSEARCH_Polygons = {};
+            } else if (jsonALL_00 === 0 && jsonALL_Polygons_00 !== 0) {
+                jsonALL_00 = jsonALL_Points_ALL;
+                jsonSEARCH = {};
+                jsonALL_Polygons_00 = jsonSEARCH_Polygons;
+                jsonSEARCH_Polygons = {};
+            } else {
+                jsonALL_00 = jsonSEARCH;
+                jsonSEARCH = {};
+                jsonALL_Polygons_00 = jsonSEARCH_Polygons;
+                jsonSEARCH_Polygons = {};
+            }
+
+            jsonSEARCH_Polygons.features = jsonALL_Polygons_00.features.filter(item => {
+                const d1 = new Date(item.properties.DateDebut);
+                const d2 = new Date(item.properties.DateFin);
+                return d1 <= rangeEnd && d2 >= rangeStart;
+            });
+
+            jsonSEARCH.features = jsonALL_00.features.filter(item => {
+                const d1 = new Date(item.properties.DateDebut);
+                const d2 = new Date(item.properties.DateFin);
+                return d1 <= rangeEnd && d2 >= rangeStart;
+            });
+
+            const k_DateRangeLabel = jsonSEARCH.features.length + jsonSEARCH_Polygons.features.length;
+            document.querySelector("#CommentairesOsiris").value = "Total Chantiers: " + k_DateRangeLabel;
+        };
+    };
+
     // Chantier
     if (ChantierLabel !== "ALLData") {
         mylist = [{ SearchLabel: ChantierLabel }];
