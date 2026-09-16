@@ -84,7 +84,7 @@ INF-Voirie-ProjectsChantiers-1030/
 
 | Dataset | Source | Date |
 |---|---|---|
-| Public works projects | Road Works Service — Infrastructure Directorate, Commune de Schaerbeek | February 2026 |
+| Public works projects | Road Works Service — Infrastructure Directorate, Commune de Schaerbeek | September 2026 |
 
 Data is extracted from the municipal infrastructure database and packaged as static GeoJSON files for client-side rendering. No server-side queries are performed at runtime.
 
