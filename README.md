@@ -71,7 +71,9 @@ INF-Voirie-ProjectsChantiers-1030/
 
 | Date | Description |
 |---|---|
-| February 2026 | Dataset updated — active projects as of 17/02/2026 |
+| September 2026 | Dataset updated — active projects as of 2026/03 |
+| Mars 2026 | Dataset updated — active projects as of 2026/03 |
+| February 2026 | Dataset updated — active projects as of 2026/01 |
 | 2025 | Initial publication |
 
 ---
