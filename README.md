@@ -10,7 +10,9 @@
 
 | Tool | Description | Link |
 |---|---|---|
-| 🗺️ **Interactive Map** | Public works projects on Schaerbeek roads | [index.html](https://gis1030.github.io/INF-Voirie-ProjectsChantiers-1030/) |
+| 🗺️ **Principal** | Public works projects on Schaerbeek roads | [index](https://gis1030.github.io/INF-Voirie-ProjectsChantiers-1030/) |
+| 🗺️ **Interactive Map** | Public Works Projects Map | [Public Works Projects 1030](https://gis1030.github.io/INF-Voirie-ProjectsChantiers-1030/ProjectsChantiers1030/Carte_ProjectsChantiers1030_StreetSurfaces_02.html)) |
+| 🗺️ **Interactive Map** | Schaerbeek Streets and Nodes Map | [Streetes and Nodes 1030](https://gis1030.github.io/INF-Voirie-ProjectsChantiers-1030/ProjectsChantiers1030/Carte_ProjectsChantiers1030_StreetSurfaces_00.html)) |
 
 ---
 
