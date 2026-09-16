@@ -1,6 +1,7 @@
 # 🏗️ Public Works Projects — Schaerbeek 1030
 
-> Cartography of public works projects on municipal roads in Schaerbeek, managed by the Infrastructure Directorate <
+> Cartography of public works projects on municipal roads in Schaerbeek, managed by the Infrastructure Directorate.
+
 > Data as of February 2026 <
 
 ---
