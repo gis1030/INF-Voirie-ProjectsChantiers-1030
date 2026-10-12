@@ -26,7 +26,7 @@ L.control.watermark({ position: 'bottomleft' }).addTo(carte);
 window.addEventListener('load', function () {
     carte.attributionControl.setPrefix('©GeoData1030: geodata.gis1030@gmail.com '
         + '<a href="https://www.1030.be/" target="_blank">Commune de Schaerbeek</a> · '
-        + '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> · '
+        + '<a href="https://eupl.eu/1.2/fr/" target="_blank">EUPL-1.2</a> · '
         + '<a href="https://leafletjs.com" target="_blank">Leaflet</a> · '
         + 'Powered by <a href="https://www.esri.com" target="_blank">Esri</a>');
 });
