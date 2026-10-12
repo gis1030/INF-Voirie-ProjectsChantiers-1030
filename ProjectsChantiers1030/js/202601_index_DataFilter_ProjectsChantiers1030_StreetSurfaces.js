@@ -57,6 +57,41 @@ const PolygonStyle_VIVAQUA_DIS = { fillColor: "#FFEB3B", fillOpacity: 0.7, color
 const PolygonStyle_VIVAQUA_REP = { fillColor: "#795548", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
 const PolygonStyle_VOO = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
 const PolygonStyle_WYRE = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_SPRB = { fillColor: "#00ACC1", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+// Impetrants absents de IMPETRANTS_1030 (nouvelles entreprises dans les données)
+const PolygonStyle_Autres = { fillColor: "#FF1493", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+
+// Impetrants ayant leur propre couleur ; les autres sont regroupés sous IMPETRANTS_AUTRES
+const IMPETRANTS_1030 = [
+    "BELIRIS",
+    "BM-DEN",
+    "BM-DPV",
+    "BRUTELE",
+    "COLT",
+    "DITP",
+    "ELIA",
+    "EUROFIBER",
+    "INFRABEL",
+    "IRISNET",
+    "PROXIMUS",
+    "SCHAERBEEK AMÉNAGEMENT COMPLET",
+    "SCHAERBEEK ASPHALTE",
+    "SCHAERBEEK DAV",
+    "SCHAERBEEK MARQUAGE",
+    "SCHAERBEEK RENOVAS",
+    "SCHAERBEEK TROTTOIRS",
+    "SIBELGA",
+    "SIBELGA EP",
+    "SPRB",
+    "VIVAQUA ASSAINISSEMENT",
+    "VIVAQUA DISTRIBUTION",
+    "VIVAQUA RÉPARTITION",
+    "VOO",
+    "WYRE",
+    "DIGI",
+    "STIB",
+];
+const IMPETRANTS_AUTRES = "AUTRES";
 
 // on personnalise les marqueurs
 const DataIcon05 = L.icon({
@@ -214,6 +249,12 @@ let FermetureLabel = ""
 let jsonALL_Polygons = {};
 jsonALL_Polygons = ProjectsChantiers1030
 
+// Fermeture de rue : valeurs toujours en minuscules et sans espaces ("Oui " -> "oui")
+ProjectsChantiers1030.features.forEach(function (feature) {
+    const valeur = feature.properties.FermetureRue;
+    if (typeof valeur === "string") feature.properties.FermetureRue = valeur.trim().toLowerCase();
+});
+
 // +++BEGIN++ Impetrants +++++++++
 ImpetrantLabel = "BELIRIS"
 const Impetrant_01 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_BELIRIS, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
@@ -345,6 +386,16 @@ const Impetrant_26 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_WYRE, Polyg
 const Impetrant_S26 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_WYRE, [ProjectsChantiers1030]);
 const Impetrant_D26 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_WYRE, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
+ImpetrantLabel = "SPRB"
+const Impetrant_27 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SPRB, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S27 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SPRB, [ProjectsChantiers1030]);
+const Impetrant_D27 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_SPRB, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
+
+// Autres impetrants (sans couleur propre)
+const Impetrant_99 = crearCapaImpetrant(IMPETRANTS_AUTRES, PolygonStyle_Autres, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+const Impetrant_S99 = crearCapaImpetrantSimple(IMPETRANTS_AUTRES, PolygonStyle_Autres, [ProjectsChantiers1030]);
+const Impetrant_D99 = crearCapaImpetrantValidDate_NULL(IMPETRANTS_AUTRES, PolygonStyle_Autres, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
+
 const PolygonStyle_Coral_02 = { fillColor: "#e8a076", fillOpacity: 0.2, color: "#000000", opacity: 0.3, weight: 1 };
 const Chantier1030_Street = crearCapaImpetrant_ClosedStreet(PolygonStyle_Coral_02, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
 // +++END++ Impetrants +++++++++
@@ -377,6 +428,8 @@ const GroupChantiersMap1030 = new L.featureGroup([
     Impetrant_24,
     Impetrant_25,
     Impetrant_26,
+    Impetrant_27,
+    Impetrant_99,
     //Chantier1030_Street
 ]);
 const GroupChantiersMap1030_00 = GroupChantiersMap1030
@@ -409,6 +462,8 @@ const GroupChantiersMap1030_S = new L.featureGroup([
     Impetrant_S24,
     Impetrant_S25,
     Impetrant_S26,
+    Impetrant_S27,
+    Impetrant_S99,
 ]);
 
 // Valid Data
@@ -439,6 +494,8 @@ const GroupChantiersMap1030_D = new L.featureGroup([
     Impetrant_D24,
     Impetrant_D25,
     Impetrant_D26,
+    Impetrant_D27,
+    Impetrant_D99,
 ]);
 
 let GroupALL_Chantiers = new L.featureGroup([
@@ -728,7 +785,7 @@ function SearchData() {
             ControlData = "ALL"
             DateDebutLabel_0 = new Date(2024, 0, 1);
             DateFinLabel_0 = new Date(2040, 12, 31);
-            alert("Aucune date n'a été saisie pour les chantiers. \n Les dates de recherche sont définies entre 2024-01-01 et 2040-12-31. \n Modifiez les critères de recherche");
+            // Le choix "préciser / période par défaut" est proposé avant l'appel (FiltrerSimple)
         } else {
             console.log("02. La fecha es válida.");
             DateDebutLabel_0 = fechaStr1;
@@ -864,8 +921,8 @@ function SearchData() {
     if (ChantierLabel === "ALLData") {
         if (DateDebutLabel !== "ALLData" || DateFinLabel !== "ALLData") {
 
-            const rangeStart = DateDebutLabel !== "ALLData" ? new Date(DateDebutLabel) : new Date(2000, 0, 1);
-            const rangeEnd   = DateFinLabel   !== "ALLData" ? new Date(DateFinLabel)   : new Date(2099, 11, 31);
+            const rangeStart = DateDebutLabel !== "ALLData" ? new Date(DateDebutLabel) : new Date(DATE_DEBUT_REFERENCE);
+            const rangeEnd   = DateFinLabel   !== "ALLData" ? new Date(DateFinLabel)   : new Date(DATE_FIN_REFERENCE);
 
             if (jsonALL_00 === 0 && jsonALL_Polygons_00 === 0) {
                 jsonALL_00 = jsonALL_Points_ALL;
@@ -1119,75 +1176,7 @@ function SearchData() {
 
     if (jsonSEARCH_Polygons.features.length !== 0) {
         const GroupALL_Chantiers = L.geoJSON([jsonSEARCH_Polygons], {
-            filter: function (feature) {
-                var nom = feature.properties.NomImpetrant;
-                return [
-                    "BELIRIS",
-                    "BM-DEN",
-                    "BM-DPV",
-                    "BRUTELE",
-                    "COLT",
-                    "DITP",
-                    "ELIA",
-                    "EUROFIBER",
-                    "INFRABEL",
-                    "IRISNET",
-                    "PROXIMUS",
-                    "SCHAERBEEK AMÉNAGEMENT COMPLET",
-                    "SCHAERBEEK ASPHALTE",
-                    "SCHAERBEEK DAV",
-                    "SCHAERBEEK MARQUAGE",
-                    "SCHAERBEEK RENOVAS",
-                    "SCHAERBEEK TROTTOIRS",
-                    "SIBELGA",
-                    "SIBELGA EP",
-                    "VIVAQUA ASSAINISSEMENT",
-                    "VIVAQUA DISTRIBUTION",
-                    "VIVAQUA RÉPARTITION",
-                    "VOO",
-                    "WYRE",
-                    "DIGI",
-                    "STIB",
-                ].includes(nom);
-            },
-            style: function (feature) {
-                // Debug: ver el valor de FermetureRue
-                // console.log("FermetureRue value:", feature.properties.FermetureRue, "Type:", typeof feature.properties.FermetureRue);
-
-                if (feature.properties.FermetureRue && feature.properties.FermetureRue.trim().toLowerCase() === "oui") {
-                    return PolygonStyle_StreetClosed;
-                }
-                const nom = feature.properties.NomImpetrant;
-                switch (nom) {
-                    case "BELIRIS": return PolygonStyle_BELIRIS;
-                    case "BM-DEN": return PolygonStyle_BM_DEN;
-                    case "BM-DPV": return PolygonStyle_BM_DPV;
-                    case "BRUTELE": return PolygonStyle_BRUTELE;
-                    case "COLT": return PolygonStyle_COLT;
-                    case "DIGI": return PolygonStyle_DIGI;
-                    case "DITP": return PolygonStyle_DITP;
-                    case "ELIA": return PolygonStyle_ELIA;
-                    case "EUROFIBER": return PolygonStyle_EUROFIBER;
-                    case "INFRABEL": return PolygonStyle_INFRABEL;
-                    case "IRISNET": return PolygonStyle_IRISNET;
-                    case "PROXIMUS": return PolygonStyle_PROXIMUS;
-                    case "SCHAERBEEK AMÉNAGEMENT COMPLET": return PolygonStyle_SCHAERBEEK_AME_COMPLET;
-                    case "SCHAERBEEK ASPHALTE": return PolygonStyle_SCHAERBEEK_ASPHALTE;
-                    case "SCHAERBEEK DAV": return PolygonStyle_SCHAERBEEK_DAV;
-                    case "SCHAERBEEK MARQUAGE": return PolygonStyle_SCHAERBEEK_MARQUAGE;
-                    case "SCHAERBEEK RENOVAS": return PolygonStyle_SCHAERBEEK_RENOVAS;
-                    case "SCHAERBEEK TROTTOIRS": return PolygonStyle_SCHAERBEEK_TROTTOIRS;
-                    case "SIBELGA": return PolygonStyle_SIBELGA;
-                    case "SIBELGA EP": return PolygonStyle_SIBELGA_EP;
-                    case "STIB": return PolygonStyle_STIB;
-                    case "VIVAQUA ASSAINISSEMENT": return PolygonStyle_VIVAQUA_ASS;
-                    case "VIVAQUA DISTRIBUTION": return PolygonStyle_VIVAQUA_DIS;
-                    case "VIVAQUA RÉPARTITION": return PolygonStyle_VIVAQUA_REP;
-                    case "VOO": return PolygonStyle_VOO;
-                    case "WYRE": return PolygonStyle_WYRE;
-                    default: return PolygonStyle_DeepPink;
-                }
-            },
+            style: styleChantier1030,
             onEachFeature: onEachFeature,
         }); // .addTo(carte); ; inutile lors de lúti;isation des clusters
         GroupPolygonsMap1030_ALL.addLayer(GroupALL_Chantiers)
@@ -1218,6 +1207,44 @@ function SearchData() {
 
 };
 
+
+// Style des chantiers selon l'impetrant (rouge si fermeture de rue, rose si impetrant hors liste)
+function styleChantier1030(feature) {
+    if (feature.properties.FermetureRue && feature.properties.FermetureRue.trim().toLowerCase() === "oui") {
+        return PolygonStyle_StreetClosed;
+    }
+    const nom = feature.properties.NomImpetrant;
+    switch (nom) {
+        case "BELIRIS": return PolygonStyle_BELIRIS;
+        case "BM-DEN": return PolygonStyle_BM_DEN;
+        case "BM-DPV": return PolygonStyle_BM_DPV;
+        case "BRUTELE": return PolygonStyle_BRUTELE;
+        case "COLT": return PolygonStyle_COLT;
+        case "DIGI": return PolygonStyle_DIGI;
+        case "DITP": return PolygonStyle_DITP;
+        case "ELIA": return PolygonStyle_ELIA;
+        case "EUROFIBER": return PolygonStyle_EUROFIBER;
+        case "INFRABEL": return PolygonStyle_INFRABEL;
+        case "IRISNET": return PolygonStyle_IRISNET;
+        case "PROXIMUS": return PolygonStyle_PROXIMUS;
+        case "SCHAERBEEK AMÉNAGEMENT COMPLET": return PolygonStyle_SCHAERBEEK_AME_COMPLET;
+        case "SCHAERBEEK ASPHALTE": return PolygonStyle_SCHAERBEEK_ASPHALTE;
+        case "SCHAERBEEK DAV": return PolygonStyle_SCHAERBEEK_DAV;
+        case "SCHAERBEEK MARQUAGE": return PolygonStyle_SCHAERBEEK_MARQUAGE;
+        case "SCHAERBEEK RENOVAS": return PolygonStyle_SCHAERBEEK_RENOVAS;
+        case "SCHAERBEEK TROTTOIRS": return PolygonStyle_SCHAERBEEK_TROTTOIRS;
+        case "SIBELGA": return PolygonStyle_SIBELGA;
+        case "SIBELGA EP": return PolygonStyle_SIBELGA_EP;
+        case "SPRB": return PolygonStyle_SPRB;
+        case "STIB": return PolygonStyle_STIB;
+        case "VIVAQUA ASSAINISSEMENT": return PolygonStyle_VIVAQUA_ASS;
+        case "VIVAQUA DISTRIBUTION": return PolygonStyle_VIVAQUA_DIS;
+        case "VIVAQUA RÉPARTITION": return PolygonStyle_VIVAQUA_REP;
+        case "VOO": return PolygonStyle_VOO;
+        case "WYRE": return PolygonStyle_WYRE;
+        default: return PolygonStyle_Autres;
+    }
+}
 
 // +++ BEGIN Clasificacion por tipo de geometria +++++++++
 function getFeaturesByGeometry(featureCollection, filterType) {
@@ -1368,11 +1395,17 @@ function createSeparateGeoJsonCollections(sourceCollection) {
 //console.log("Estructura de jsonALL_Polygons:", jsonALL_Polygons_00);
 // +++ END Clasificacion por tipo de geometria +++++++++
 
+// Le feature appartient-il à l'impetrant label ? (IMPETRANTS_AUTRES = tout impetrant hors IMPETRANTS_1030)
+function correspondImpetrant(feature, label) {
+    const nom = feature.properties.NomImpetrant;
+    return label === IMPETRANTS_AUTRES ? !IMPETRANTS_1030.includes(nom) : nom === label;
+}
+
 function crearCapaImpetrant(label, StyleImpetrant, StyleStreetClosed, geoData) {
     // 1. Creamos la capa GeoJSON con los filtros y estilos
     const capa = L.geoJSON(geoData, {
         filter: function (feature) {
-            return feature.properties.NomImpetrant === label;
+            return correspondImpetrant(feature, label);
         },
         style: function (feature) {
             return feature.properties.FermetureRue === "oui"
@@ -1393,7 +1426,7 @@ function crearCapaImpetrantValidDate(label, StyleImpetrant, StyleStreetClosed, g
     // 1. Creamos la capa GeoJSON con los filtros y estilos
     const capa = L.geoJSON(geoData, {
         filter: function (feature) {
-            return feature.properties.NomImpetrant === label;
+            return correspondImpetrant(feature, label);
         },
         style: function (feature) {
             // Extraemos la fecha y eliminamos espacios en blanco
@@ -1417,7 +1450,7 @@ function crearCapaImpetrantValidDate_NULL(label, StyleImpetrant, StyleStreetClos
     const capa = L.geoJSON(geoData, {
         filter: function (feature) {
             // 1. Verificamos que sea el Impetrant correcto
-            const mismoImpetrant = feature.properties.NomImpetrant === label;
+            const mismoImpetrant = correspondImpetrant(feature, label);
 
             // 2. Verificamos si la fecha está vacía (null, undefined o texto vacío)
             const fecha = feature.properties?.DateDebut;
@@ -1458,7 +1491,7 @@ function crearCapaImpetrantSimple(label, StyleImpetrant, geoData) {
     // Creamos la capa filtrando únicamente por el nombre
     const capa = L.geoJSON(geoData, {
         filter: function (feature) {
-            return feature.properties.NomImpetrant === label;
+            return correspondImpetrant(feature, label);
         },
         style: StyleImpetrant, // Aplica el estilo directamente a todos
         onEachFeature: onEachFeature

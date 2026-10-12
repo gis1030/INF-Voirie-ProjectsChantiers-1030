@@ -48,17 +48,9 @@
 
 <body id="ALL_HTML">
     <div id="Internal_Body">
-        <div id="HTML_Heading">
-            <header class="page-header">
-                <h1>
-                    Coordination des Chantiers à Schaerbeek
-                </h1>
-            </header>
-        </div>
-
         <div id="Region00">
             <div id="Region04">
-                <div id="maCarte"></div>
+                <div id="maCarte" data-title="Coordination des Chantiers à Schaerbeek"></div>
                 <!--
                 <div class="info-panel">
                     <h4>Chantiers 1030</h4>
@@ -73,7 +65,7 @@
             <div id="myTable"></div>
         </div>
 
-        <div id="Region01" style="align-items: flex-start; align-content: flex-start; justify-content: flex-start; overflow-y: auto; overflow-x: hidden;">
+        <div id="Region01" class="panneau-centre" style="align-items: flex-start; align-content: flex-start; justify-content: flex-start; overflow-y: auto; overflow-x: hidden;">
             <div class="container">
                 <div class="row">
                     <div class="container">
@@ -211,23 +203,6 @@
         </div>
     </div>
 
-    <div id="HTML_Footer">
-        <br>
-        <footer id="footer">
-            <span>
-                <a>© 2021 </a></a><a href="mailto:ihhilal@gmail.com " style="color: #eea4a4 ">I.H.Hilal</a>
-                <a>Powered for the <a href="https://www.1030.be/ " style="color: #eea4a4 ">commune de
-                        Schaerbeek</a><br>
-                    <a>The content of this page is under the Creative Commons license, <br>
-                        full information is available
-                        <a target="_blank " href="https://creativecommons.org/licenses/by-nc-sa/4.0/ "
-                            style="color: #eea4a4 ">here.</a><br>
-                        <a rel="license " href="https://creativecommons.org/licenses/by-nc-sa/4.0/ ">
-                            <img alt="Licencia Creative Commons " style="border-width:0 " src="images/by-nc-sa.eu.png "
-                                width="50 " height="20 "></a>
-            </span>
-        </footer>
-    </div>
     </div>
 
     <div id="JavaScript_Libraries">
@@ -251,8 +226,6 @@
             <!-- Fichiers Javascript Projets Futurs Donnes OSIRIS -->
             <!-- <script src="databases/Chantiers1030_ProjectFutur.js" type="text/javascript"></script> -->
             <script src="databases/Chantiers1030_ProjectFutur_ALL.js" type="text/javascript"></script>
-
-            type="text/javascript"></script>
         </div>
 
         <div id="JavaScript_ExternalLibraries">
@@ -289,6 +262,7 @@
 
             <!-- bibliothèque interne JS -->
             <script src="js/index_tiles.js"></script>
+            <script src="js/index_mapBranding.js"></script>
             <script src="js/index_Data_StreetSurfaces1030.js"></script>
             <script src="js/index_clusters_Chantier1030.js"></script>
             <script src="js/index_controls_StreetSurfaces1030.js"></script>

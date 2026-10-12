@@ -176,6 +176,12 @@ carte.addLayer(GroupALL_URBIS_NodesSurfaces) // NodesSurfaces URBIS
 // ======== Chantiers1030 Data ==============
 // ++++++++++++++++++++++++++++++++++++++++++
 
+// Fermeture de rue : valeurs toujours en minuscules et sans espaces ("Oui " -> "oui")
+ProjectsChantiers1030.features.forEach(function (feature) {
+    const valeur = feature.properties.FermetureRue;
+    if (typeof valeur === "string") feature.properties.FermetureRue = valeur.trim().toLowerCase();
+});
+
 // +++BEGIN++ Impetrants +++++++++
 const PolygonStyle_StreetClosed = { fillColor: "#ff0000", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
 const PolygonStyle_ValidDateNULL = { fillColor: "#250c71bf", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
@@ -206,6 +212,41 @@ const PolygonStyle_VIVAQUA_DIS = { fillColor: "#FFEB3B", fillOpacity: 0.7, color
 const PolygonStyle_VIVAQUA_REP = { fillColor: "#795548", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
 const PolygonStyle_VOO = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
 const PolygonStyle_WYRE = { fillColor: "#9575CD", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+const PolygonStyle_SPRB = { fillColor: "#00ACC1", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+// Impetrants absents de IMPETRANTS_1030 (nouvelles entreprises dans les données)
+const PolygonStyle_Autres = { fillColor: "#FF1493", fillOpacity: 0.7, color: "#000000", opacity: 0.3, weight: 1 };
+
+// Impetrants ayant leur propre couleur ; les autres sont regroupés sous IMPETRANTS_AUTRES
+var IMPETRANTS_1030 = [
+    "BELIRIS",
+    "BM-DEN",
+    "BM-DPV",
+    "BRUTELE",
+    "COLT",
+    "DITP",
+    "ELIA",
+    "EUROFIBER",
+    "INFRABEL",
+    "IRISNET",
+    "PROXIMUS",
+    "SCHAERBEEK AMÉNAGEMENT COMPLET",
+    "SCHAERBEEK ASPHALTE",
+    "SCHAERBEEK DAV",
+    "SCHAERBEEK MARQUAGE",
+    "SCHAERBEEK RENOVAS",
+    "SCHAERBEEK TROTTOIRS",
+    "SIBELGA",
+    "SIBELGA EP",
+    "SPRB",
+    "VIVAQUA ASSAINISSEMENT",
+    "VIVAQUA DISTRIBUTION",
+    "VIVAQUA RÉPARTITION",
+    "VOO",
+    "WYRE",
+    "DIGI",
+    "STIB",
+];
+var IMPETRANTS_AUTRES = "AUTRES";
 
 ImpetrantLabel = "BELIRIS"
 var Impetrant_01 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_BELIRIS, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
@@ -337,6 +378,16 @@ var Impetrant_26 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_WYRE, Polygon
 var Impetrant_S26 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_WYRE, [ProjectsChantiers1030]);
 var Impetrant_D26 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_WYRE, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
 
+ImpetrantLabel = "SPRB"
+var Impetrant_27 = crearCapaImpetrant(ImpetrantLabel, PolygonStyle_SPRB, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+var Impetrant_S27 = crearCapaImpetrantSimple(ImpetrantLabel, PolygonStyle_SPRB, [ProjectsChantiers1030]);
+var Impetrant_D27 = crearCapaImpetrantValidDate_NULL(ImpetrantLabel, PolygonStyle_SPRB, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
+
+// Autres impetrants (sans couleur propre)
+var Impetrant_99 = crearCapaImpetrant(IMPETRANTS_AUTRES, PolygonStyle_Autres, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
+var Impetrant_S99 = crearCapaImpetrantSimple(IMPETRANTS_AUTRES, PolygonStyle_Autres, [ProjectsChantiers1030]);
+var Impetrant_D99 = crearCapaImpetrantValidDate_NULL(IMPETRANTS_AUTRES, PolygonStyle_Autres, PolygonStyle_ValidDateNULL, [ProjectsChantiers1030]);
+
 
 const PolygonStyle_Coral_02 = { fillColor: "#e8a076", fillOpacity: 0.2, color: "#000000", opacity: 0.3, weight: 1 };
 var Chantier1030_Street = crearCapaImpetrant_ClosedStreet(PolygonStyle_Coral_02, PolygonStyle_StreetClosed, [ProjectsChantiers1030]);
@@ -403,6 +454,8 @@ var GroupChantiersMap1030 = new L.featureGroup([
     Impetrant_24,
     Impetrant_25,
     Impetrant_26,
+    Impetrant_27,
+    Impetrant_99,
     //Chantier1030_Street
 ]);
 
@@ -434,6 +487,8 @@ var GroupChantiersMap1030_S = new L.featureGroup([
     Impetrant_S24,
     Impetrant_S25,
     Impetrant_S26,
+    Impetrant_S27,
+    Impetrant_S99,
 ]);
 
 // Valid Data
@@ -464,6 +519,8 @@ var GroupChantiersMap1030_D = new L.featureGroup([
     Impetrant_D24,
     Impetrant_D25,
     Impetrant_D26,
+    Impetrant_D27,
+    Impetrant_D99,
 ]);
 
 // Carte Viewer Laeyer
@@ -607,11 +664,17 @@ function MarkerDataView(clickedMarker) {
     //document.getElementById("Longitude").value = clickedMarker.feature.geometry.coordinates[0]
 };
 
+// Le feature appartient-il à l'impetrant label ? (IMPETRANTS_AUTRES = tout impetrant hors IMPETRANTS_1030)
+function correspondImpetrant(feature, label) {
+    const nom = feature.properties.NomImpetrant;
+    return label === IMPETRANTS_AUTRES ? !IMPETRANTS_1030.includes(nom) : nom === label;
+}
+
 function crearCapaImpetrant(label, StyleImpetrant, StyleStreetClosed, geoData) {
     // 1. Creamos la capa GeoJSON con los filtros y estilos
     const capa = L.geoJSON(geoData, {
         filter: function (feature) {
-            return feature.properties.NomImpetrant === label;
+            return correspondImpetrant(feature, label);
         },
         style: function (feature) {
             return feature.properties.FermetureRue === "oui"
@@ -649,7 +712,7 @@ function crearCapaImpetrantValidDate(label, StyleImpetrant, StyleStreetClosed, g
     // 1. Creamos la capa GeoJSON con los filtros y estilos
     const capa = L.geoJSON(geoData, {
         filter: function (feature) {
-            return feature.properties.NomImpetrant === label;
+            return correspondImpetrant(feature, label);
         },
         style: function (feature) {
             // Extraemos la fecha y eliminamos espacios en blanco
@@ -673,7 +736,7 @@ function crearCapaImpetrantValidDate_NULL(label, StyleImpetrant, StyleStreetClos
     const capa = L.geoJSON(geoData, {
         filter: function (feature) {
             // 1. Verificamos que sea el Impetrant correcto
-            const mismoImpetrant = feature.properties.NomImpetrant === label;
+            const mismoImpetrant = correspondImpetrant(feature, label);
 
             // 2. Verificamos si la fecha está vacía (null, undefined o texto vacío)
             const fecha = feature.properties?.DateDebut;
@@ -697,7 +760,7 @@ function crearCapaImpetrantSimple(label, StyleImpetrant, geoData) {
     // Creamos la capa filtrando únicamente por el nombre
     const capa = L.geoJSON(geoData, {
         filter: function (feature) {
-            return feature.properties.NomImpetrant === label;
+            return correspondImpetrant(feature, label);
         },
         style: StyleImpetrant, // Aplica el estilo directamente a todos
         onEachFeature: onEachFeature
@@ -713,7 +776,7 @@ function crearCapaImpetrant_Option(label, StyleStreetClosed, StyleImpetrant, geo
     // 1. Creamos la capa GeoJSON con los filtros y estilos
     const capa = L.geoJSON(geoData, {
         filter: function (feature) {
-            return feature.properties.NomImpetrant === label;
+            return correspondImpetrant(feature, label);
         },
         style: function (feature) {
             return feature.properties.FermetureRue === "oui"

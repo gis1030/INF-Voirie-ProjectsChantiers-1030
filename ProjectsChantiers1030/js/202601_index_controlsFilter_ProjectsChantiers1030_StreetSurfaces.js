@@ -88,12 +88,14 @@ const GroupDataALL_Impetrants1030 = {
     "<b>SCHAERBEEK TROTTOIRS</b></br>": Impetrant_18,
     "<b>SIBELGA</b></br>": Impetrant_19,
     "<b>SIBELGA EP</b></br>": Impetrant_20,
+    "<b>SPRB</b></br>": Impetrant_27,
     "<b>STIB</b></br>": Impetrant_21,
     "<b>VIVAQUA ASSAINISSEMENT</b></br>": Impetrant_22,
     "<b>VIVAQUA DISTRIBUTION</b></br>": Impetrant_23,
     "<b>VIVAQUA RÉPARTITION</b></br>": Impetrant_24,
     "<b>VOO</b></br>": Impetrant_25,
     "<b>WYRE</b></br>": Impetrant_26,
+    "<b>Autres impetrants</b></br>": Impetrant_99,
 };
 
 // ++++++++++++++++++++++++++++++++++++++++++
@@ -156,7 +158,7 @@ L.easyButton('<img src="images/gps-position.png" width="26" height="26" >', func
 
 // ++BEGIN++ MousePosition Maps +++++
 const mousePoistion00 = L.geoportalControl.MousePosition({
-    position: 'bottomleft',
+    position: 'bottomright',
     collapsed: true,
     displayAltitude: false,
     editCoordinates: false,

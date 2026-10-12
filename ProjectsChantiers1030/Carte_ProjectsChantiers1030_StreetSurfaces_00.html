@@ -29,23 +29,14 @@
 
 <body>
     <div id="Internal_Body">
-        <div id="HTML_Heading">
-            <header class="page-header">
-                <h1>
-                    Rues et Croisements de Rues de Schaerbeek
-                </h1>
-            </header>
-            <br>
-        </div>
-
         <div id="Region00">
             <div id="Region04">
-                <div id="maCarte"></div>
+                <div id="maCarte" data-title="Rues et Croisements de Rues de Schaerbeek"></div>
             </div>
             <div id="myTable"></div>
         </div>
 
-        <div id="Region01">
+        <div id="Region01" class="panneau-centre" style="align-items: flex-start; align-content: flex-start; justify-content: flex-start; overflow-y: auto; overflow-x: hidden;">
             <div class="container">
                 <div class="row">
                     <div class="container">
@@ -235,23 +226,6 @@
     </div>
     </div>
 
-    <div id="HTML_Footer">
-        <br>
-        <footer id="footer">
-            <span>
-                <a>© 2021 </a><a href="mailto:ihhilal@gmail.com " style="color: #eea4a4 ">I.H.Hilal</a>
-                <a>Powered for the <a href="https://www.1030.be/ " style="color: #eea4a4 ">commune de
-                        Schaerbeek</a><br>
-                    <a>The content of this page is under the Creative Commons license, <br>
-                        full information is available
-                        <a target="_blank " href="https://creativecommons.org/licenses/by-nc-sa/4.0/ "
-                            style="color: #eea4a4 ">here.</a><br>
-                        <a rel="license " href="https://creativecommons.org/licenses/by-nc-sa/4.0/ ">
-                            <img alt="Licencia Creative Commons " style="border-width:0 " src="images/by-nc-sa.eu.png "
-                                width="50 " height="20 "></a>
-            </span>
-        </footer>
-    </div>
     </div>
 
     <!-- Scripts -->
@@ -278,6 +252,7 @@
     <script src="js/bootstrap.bundle.min.js"></script>
 
     <script src="js/index_tiles.js"></script>
+    <script src="js/index_mapBranding.js"></script>
     <script src="js/index_clusters_Chantier1030.js"></script>
     <script src="js/index_ClearData_ProjectsChantier1030.js"></script>
 

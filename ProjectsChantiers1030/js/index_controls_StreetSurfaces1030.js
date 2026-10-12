@@ -88,12 +88,14 @@ const GroupDataALL_Impetrants1030 = {
     "<img src='legend/SCHAERBEEK_TROTTOIRS.png' width='12px'/><b> SCHAERBEEK TROTTOIRS</b></br>": Impetrant_18,
     "<img src='legend/SIBELGA.png' width='12px'/><b> SIBELGA</b></br>": Impetrant_19,
     "<img src='legend/SIBELGA_EP.png' width='12px'/><b> SIBELGA EP</b></br>": Impetrant_20,
+    "<img src='legend/SPRB.png' width='12px'/><b> SPRB</b></br>": Impetrant_27,
     "<img src='legend/STIB.png' width='12px'/><b> STIB</b></br>": Impetrant_21,
     "<img src='legend/VIVAQUA_ASS.png' width='12px'/><b> VIVAQUA ASSAINISSEMENT</b></br>": Impetrant_22,
     "<img src='legend/VIVAQUA_DIS.png' width='12px'/><b> VIVAQUA DISTRIBUTION</b></br>": Impetrant_23,
     "<img src='legend/VIVAQUA_REP.png' width='12px'/><b> VIVAQUA RÉPARTITION</b></br>": Impetrant_24,
     "<img src='legend/VOO.png' width='12px'/><b> VOO</b></br>": Impetrant_25,
     "<img src='legend/WYRE.png' width='12px'/><b> WYRE</b></br>": Impetrant_26,
+    "<img src='legend/AUTRES.png' width='12px'/><b> Autres impetrants</b></br>": Impetrant_99,
 };
 
 // ++++++++++++++++++++++++++++++++++++++++++

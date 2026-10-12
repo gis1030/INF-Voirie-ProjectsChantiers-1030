@@ -37265,7 +37265,7 @@ var ProjectsChantiers1030 = {
 				"DureeJoirs" : 260,
 				"OsirisB1" : "407875",
 				"PiloteB1" : "",
-				"FermetureRue" : "oi",
+				"FermetureRue" : "oui",
 				"Remarque" : "",
 				"Anne" : 2030,
 				"VOIRIE_NOM_INF" : "Fuss Gustave (rue)"
@@ -42153,7 +42153,7 @@ var ProjectsChantiers1030 = {
 				"DureeJoirs" : 300,
 				"OsirisB1" : "250829",
 				"PiloteB1" : "",
-				"FermetureRue" : "Oui",
+				"FermetureRue" : "oui",
 				"Remarque" : "De façade à façade - En coordination",
 				"Anne" : 2028,
 				"VOIRIE_NOM_INF" : "Général Meiser (Place)"
@@ -73543,7 +73543,7 @@ var ProjectsChantiers1030 = {
 				"DureeJoirs" : 400,
 				"OsirisB1" : "829126",
 				"PiloteB1" : "SCHAERBEEK TROTTOIRS",
-				"FermetureRue" : "Oui",
+				"FermetureRue" : "oui",
 				"Remarque" : "",
 				"Anne" : 2027,
 				"VOIRIE_NOM_INF" : "d'Hoogvorst (rue)"

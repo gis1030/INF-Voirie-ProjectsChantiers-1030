@@ -4,8 +4,8 @@ html {
 
 body {
     min-height: 100%;
-    margin: 4px;
-    padding: 4px;
+    margin: 0;
+    padding: 0;
     text-align: left;
 }
 
@@ -23,60 +23,6 @@ dib {
     min-width: 100vW;
 }
 
-
-header {
-    background-color: #2e0e792f;
-    /*width: 1000px;*/
-    /*top: 1%;*/
-    display: flex;
-    width: 73.6%;
-    height: 8%;
-    position: fixed;
-    top: 1px;
-    margin: 1px 1px;
-    align-items: center;
-    padding: 1px;
-    border: 0px solid #2e0e792f;
-    justify-content: left;
-    color: rgb(252, 252, 252);
-    text-shadow: rgb(0, 0, 0) 0 0 .9em;
-    background: url(images/Title_07.png) center center no-repeat;
-    box-sizing: border-box;
-}
-
-header.page-header>h1 {
-    font-family: tahoma, helvetica;
-    font-weight: bold;
-    font-size: xx-large;
-    font-size: calc(0.6rem + 1.05vw);
-    margin: 0.5%;
-}
-
-footer {
-    background-color: #2e0e792f;
-    width: 73.6%;
-    height: 9%;
-    position: fixed;
-    bottom: 1px;
-    margin: 1px 1px;
-    align-items: center;
-    padding: 1px;
-    border: 0px solid #2e0e792f;
-    justify-content: center;
-    color: rgb(255, 255, 255);
-    text-shadow: rgb(141, 141, 141) 0 0 .9em;
-    background: url(images/Footer_07.png) center center no-repeat;
-    box-sizing: border-box;
-    display: flex;
-    font-family: tahoma, helvetica;
-    font-weight: bold;
-    font-size: calc(0.3rem + 0.3vw);
-    font: center;
-    margin: 0.1%;
-    text-align:
-        center;
-}
-
 div#Region05 {
     position: absolute;
     display: flex;
@@ -89,17 +35,18 @@ div#Region05 {
     display: flex;
 }
 
-
 div#Region01 {
-    /* FONT-WEIGHT: 10; */
+    /* Panneau latéral : ancré à droite, séparé de la carte */
     position: absolute;
-    /* position: relative; */
+    top: 4px;
+    right: 4px;
     width: 25%;
-    height: 99%;
-    border: 0.1em solid rgb(13 110 253 / 25%);
-    margin: 0 0 0 74%;
+    height: calc(100vh - 8px);
+    border: 1px solid rgb(13 110 253 / 25%);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 0;
     padding: 0.1em;
-    top: 1%;
     background-color: #ced9e5;
     box-sizing: border-box;
     display: flex;
@@ -110,17 +57,18 @@ div#Region01 {
 }
 
 div#Region04 {
-    /* position: fixed; */
+    /* Carte : occupe l'espace restant à gauche du panneau, avec un espace entre les deux */
     position: relative;
-    /* position: absolute; */
-    width: 74.5%;
+    top: 0;
+    width: calc(75% - 8px);
     height: 100%;
-    border: 0.0em solid transparent;
-    /* margin: 0% 0% 0% 36%; */
+    border: 1px solid rgb(13 110 253 / 25%);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
     background-color: rgb(224, 216, 247);
     box-sizing: border-box;
     display: flex;
-    top: 0.5%;
     align-content: center;
     align-items: center;
 }
@@ -157,16 +105,13 @@ div#Region99 {
 
 div#Region00 {
     position: absolute;
-    /* position: relative; */
-    top: 9%;
-    /* height: 80%; */
-    width: 99%;
-    height: 81%;
+    top: 4px;
+    left: 4px;
+    width: calc(100% - 8px);
+    height: calc(100vh - 8px);
     background-color: transparent;
     opacity: 1;
     border: 0.1em solid transparent;
-    /* margin: 0em 0em 0em 0em; */
-    /* padding: 0.1em; */
     align-items: center;
     box-sizing: border-box;
     display: flex;
@@ -228,4 +173,81 @@ div#Region00 {
 .info-panel h4 {
     margin: 0 0 10px;
     color: #444;
+}
+
+/* Titre de la carte (coin supérieur gauche), comme Bilan-SPEV1030 */
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background-color: #f8f8f8 !important;
+    color: #444444 !important;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.info h2 {
+    margin: 0 0 5px;
+    font-size: calc(0.9rem + 0.4vw);
+    font-weight: bold;
+}
+
+/* Mode comparaison (Carte 03) : deux volets carte côte à côte */
+.volet-carte {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.volet-carte #maCarte,
+.volet-carte #maCarte2 {
+    flex: 1;
+    min-height: 0;
+}
+
+.volet-carte-2,
+.sous-titre-periode {
+    display: none;
+}
+
+#Region04.mode-comparaison {
+    gap: 4px;
+}
+
+#Region04.mode-comparaison .volet-carte {
+    width: calc(50% - 2px);
+}
+
+#Region04.mode-comparaison .volet-carte-2 {
+    display: flex;
+}
+
+#Region04.mode-comparaison .sous-titre-periode {
+    display: block;
+    padding: 4px 8px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid rgb(13 110 253 / 25%);
+    font: bold 14px/18px Arial, Helvetica, sans-serif;
+    color: #444444;
+    text-align: center;
+}
+
+.titre-periode {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 0.7rem;
+    font-size: calc(0.5rem + 0.3vw);
+    font-weight: bold;
+}
+
+.ligne-periode {
+    border-top: 1px solid rgb(13 110 253 / 25%);
+    margin-top: 2px;
+}
+
+/* Panneau latéral : contenu centré verticalement s'il tient,
+   sinon aligné en haut avec défilement (les marges auto tombent à 0) */
+.panneau-centre > .container {
+    margin-top: auto;
+    margin-bottom: auto;
 }

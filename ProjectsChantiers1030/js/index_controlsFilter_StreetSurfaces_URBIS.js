@@ -87,7 +87,7 @@ L.easyButton('<img src="images/gps-position.png" width="26" height="26" >', getL
 
 // Mouse Position
 const mousePoistion00 = L.geoportalControl.MousePosition({
-    position: 'bottomleft',
+    position: 'bottomright',
     collapsed: true,
     displayAltitude: false,
     editCoordinates: false,
